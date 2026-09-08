@@ -1,600 +1,844 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DevOps Engineer portfolio focused on cloud infrastructure, CI/CD, Kubernetes, Infrastructure as Code, observability, security, reliability, and cloud cost optimization.">
-    <meta name="theme-color" content="#0f172a">
-    <title>Nure Siddiq | DevOps & Cloud Engineer</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Razibul Hossen — Full-Stack Developer (React, TypeScript, Next.js, Node.js) based in Germany, moving into DevOps and Cloud Engineering."
+    />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Razibul Hossen | Full-Stack Developer → DevOps &amp; Cloud</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
 
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; }
-        .code-font { font-family: 'Fira Code', monospace; }
-        .glass {
-            background: rgba(255, 255, 255, 0.035);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-        }
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
-            background-size: 42px 42px;
-        }
-        .gradient-text {
-            background: linear-gradient(90deg, #818cf8, #22d3ee);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .section-number {
-            color: #6366f1;
-            font-family: 'Fira Code', monospace;
-        }
-        .terminal-dot { width: 10px; height: 10px; border-radius: 999px; }
-        .skill-card:hover, .project-card:hover, .focus-card:hover {
-            transform: translateY(-4px);
-        }
-        .skill-card, .project-card, .focus-card {
-            transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .code-font {
+        font-family: "Fira Code", monospace;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+        background-size: 42px 42px;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #818cf8, #22d3ee);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .terminal-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+      }
+      .card {
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          background-color 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+      }
 
-        .architecture-node {
-            background: rgba(15, 23, 42, 0.88);
-            border: 1px solid rgba(129, 140, 248, 0.24);
-            border-radius: 14px;
-            padding: 14px 16px;
-            text-align: center;
-            min-width: 132px;
+      /* Experience timeline */
+      .timeline {
+        position: relative;
+        padding-left: 28px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          rgba(129, 140, 248, 0.55),
+          rgba(34, 211, 238, 0.15)
+        );
+      }
+      .timeline-item {
+        position: relative;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -28px;
+        top: 8px;
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: #0f172a;
+        border: 2px solid #818cf8;
+      }
+      .timeline-item.current::before {
+        background: #22d3ee;
+        border-color: #22d3ee;
+        box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.18);
+      }
+
+      .tag {
+        font-size: 11px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: rgba(30, 41, 59, 0.9);
+        color: #cbd5e1;
+        font-weight: 600;
+      }
+      .placeholder {
+        border: 1px dashed rgba(129, 140, 248, 0.35);
+        background: rgba(99, 102, 241, 0.05);
+      }
+      .badge-progress {
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(34, 211, 238, 0.1);
+        color: #67e8f9;
+        border: 1px solid rgba(34, 211, 238, 0.25);
+        font-weight: 700;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
         }
-        .architecture-arrow {
-            color: #64748b;
-            font-size: 1rem;
-            flex: 0 0 auto;
+        .card:hover {
+          transform: none;
         }
-        .evidence-grid-card {
-            background: rgba(15, 23, 42, 0.46);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        * {
+          animation: none !important;
         }
-        details.production-evidence > summary {
-            list-style: none;
-        }
-        details.production-evidence > summary::-webkit-details-marker {
-            display: none;
-        }
-        details.production-evidence[open] .evidence-chevron {
-            transform: rotate(180deg);
-        }
-        .evidence-chevron {
-            transition: transform .2s ease;
-        }
+      }
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 2px solid #22d3ee;
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
     </style>
-</head>
-<body class="bg-[#0f172a] text-slate-300 antialiased selection:bg-indigo-500/30 selection:text-white">
-
-    <!-- Navigation -->
+  </head>
+  <body
+    class="bg-[#0f172a] text-slate-300 antialiased selection:bg-indigo-500/30 selection:text-white"
+  >
+    <!-- ============ NAV ============ -->
     <nav class="fixed top-0 w-full z-50 glass border-x-0 border-t-0">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-white font-bold text-lg md:text-xl code-font" aria-label="Go to home section">
-                ~/nure<span class="text-indigo-400">.devops</span>
-            </a>
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-white font-bold text-lg md:text-xl code-font"
+          aria-label="Back to top"
+        >
+          ~/razibul<span class="text-indigo-400">.DevOps</span>
+        </a>
 
-            <div class="space-x-7 hidden md:flex items-center text-sm font-medium tracking-wide">
-                <a href="#about" class="hover:text-indigo-400 transition">About</a>
-                <a href="#skills" class="hover:text-indigo-400 transition">Tech Stack</a>
-                <a href="#projects" class="hover:text-indigo-400 transition">Projects</a>
-                <a href="#production" class="hover:text-indigo-400 transition">Production Mindset</a>
-                <a href="#contact" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition">Get in Touch</a>
-            </div>
-
-            <a href="#contact" class="md:hidden text-sm px-4 py-2 bg-indigo-600 text-white rounded-lg">Contact</a>
+        <div
+          class="space-x-7 hidden md:flex items-center text-sm font-medium tracking-wide"
+        >
+          <a href="#about" class="hover:text-indigo-400 transition">About</a>
+          <a href="#experience" class="hover:text-indigo-400 transition"
+            >Experience</a
+          >
+          <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
+          <a href="#projects" class="hover:text-indigo-400 transition"
+            >Projects</a
+          >
+          <a href="#education" class="hover:text-indigo-400 transition"
+            >Education</a
+          >
+          <a
+            href="#contact"
+            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition"
+            >Contact</a
+          >
         </div>
+
+        <a
+          href="#contact"
+          class="md:hidden text-sm px-4 py-2 bg-indigo-600 text-white rounded-lg"
+          >Contact</a
+        >
+      </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ============ HERO ============ -->
     <header id="home" class="relative pt-36 pb-24 px-6 overflow-hidden grid-bg">
-        <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-[#0f172a]"></div>
-        <div class="relative max-w-5xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 mb-7 text-xs font-semibold tracking-wider text-indigo-300 uppercase bg-indigo-400/10 rounded-full border border-indigo-400/20">
-                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                Open to DevOps / Cloud / Platform Engineering opportunities
-            </div>
-
-            <p class="code-font text-cyan-400 text-sm md:text-base mb-5">DevOps Engineer • Cloud Engineer • Platform Engineering</p>
-
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-7 tracking-tight leading-tight">
-                Automating <span class="gradient-text">Reliability</span><br class="hidden md:block"> at Scale.
-            </h1>
-
-            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-                I build secure, observable, and repeatable cloud platforms that help teams ship faster, reduce operational risk, and run infrastructure with confidence.
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-14">
-                <a href="#projects" class="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition">
-                    <i class="fa-solid fa-layer-group mr-2"></i> View Projects
-                </a>
-                <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition">
-                    <i class="fa-brands fa-github mr-2"></i> GitHub
-                </a>
-                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition" aria-label="Download resume PDF">
-                    <i class="fa-solid fa-file-arrow-down mr-2"></i> Resume
-                </a>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-                <div class="glass rounded-2xl p-5">
-                    <p class="text-2xl font-bold text-white">40%</p>
-                    <p class="text-xs text-slate-500 mt-1">Downtime reduction</p>
-                </div>
-                <div class="glass rounded-2xl p-5">
-                    <p class="text-2xl font-bold text-white">3×</p>
-                    <p class="text-xs text-slate-500 mt-1">Deployment frequency</p>
-                </div>
-                <div class="glass rounded-2xl p-5">
-                    <p class="text-lg font-bold text-white">IaC First</p>
-                    <p class="text-xs text-slate-500 mt-1">Repeatable infrastructure</p>
-                </div>
-                <div class="glass rounded-2xl p-5">
-                    <p class="text-lg font-bold text-white">Observable</p>
-                    <p class="text-xs text-slate-500 mt-1">Metrics, logs & alerts</p>
-                </div>
-            </div>
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-[#0f172a]"
+      ></div>
+      <div class="relative max-w-5xl mx-auto text-center">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 mb-7 text-xs font-semibold tracking-wide text-indigo-300 bg-indigo-400/10 rounded-full border border-indigo-400/20"
+        >
+          <span
+            class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
+          ></span>
+          Open to Full-Stack, DevOps and Cloud Engineering roles in Germany
         </div>
+
+        <p class="code-font text-cyan-400 text-sm md:text-base mb-5">
+          Full-Stack Developer • Berlin, Germany
+        </p>
+
+        <h1
+          class="text-4xl md:text-6xl font-extrabold text-white mb-7 tracking-tight leading-tight"
+        >
+          Razibul Hossen
+        </h1>
+
+        <p
+          class="text-lg md:text-xl text-slate-400 mb-4 max-w-3xl mx-auto leading-relaxed"
+        >
+          I build web applications with React, TypeScript, Next.js and Node.js —
+          and I'm moving that work closer to the infrastructure it runs on:
+          containers, CI/CD pipelines, and cloud platforms.
+        </p>
+        <p
+          class="text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed text-sm md:text-base"
+        >
+          Currently a working student developer at Hitachi Rail while finishing
+          an M.Sc. in Physics and a DevOps &amp; Cloud Engineering programme.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-14">
+          <a
+            href="#projects"
+            class="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition"
+          >
+            <i class="fa-solid fa-layer-group mr-2"></i> See my work
+          </a>
+          <a
+            href="https://github.com/hossenra"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition"
+          >
+            <i class="fa-brands fa-github mr-2"></i> GitHub
+          </a>
+          <!-- Put your CV PDF next to this file and name it resume.pdf -->
+          <a
+            href="resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition"
+          >
+            <i class="fa-solid fa-file-arrow-down mr-2"></i> Download CV
+          </a>
+        </div>
+
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left"
+        >
+          <div class="glass rounded-2xl p-5">
+            <p class="text-2xl font-bold text-white">3+ years</p>
+            <p class="text-xs text-slate-500 mt-1">Building web applications</p>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <p class="text-lg font-bold text-white">Hitachi Rail</p>
+            <p class="text-xs text-slate-500 mt-1">
+              Full-stack developer since 2025
+            </p>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <p class="text-lg font-bold text-white">M.Sc. Physics</p>
+            <p class="text-xs text-slate-500 mt-1">BTU Cottbus-Senftenberg</p>
+          </div>
+          <div class="glass rounded-2xl p-5">
+            <p class="text-lg font-bold text-white">DevOps track</p>
+            <p class="text-xs text-slate-500 mt-1">
+              Cloud engineering programme
+            </p>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <!-- About / What I Solve -->
+    <!-- ============ ABOUT ============ -->
     <section id="about" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-start">
-                <div>
-                    <div class="flex items-center gap-4 mb-7">
-                        <span class="section-number text-xl">01.</span>
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">What I Solve</h2>
-                    </div>
+      <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-start">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-7">
+              About me
+            </h2>
 
-                    <h3 class="text-2xl md:text-3xl font-semibold text-white leading-snug mb-6">
-                        I build infrastructure that developers <span class="gradient-text">do not have to worry about.</span>
-                    </h3>
+            <h3
+              class="text-2xl md:text-3xl font-semibold text-white leading-snug mb-6"
+            >
+              A developer who wants to own the whole path from commit to
+              production.
+            </h3>
 
-                    <p class="text-slate-400 leading-8 mb-6">
-                        My focus is the space between application code and reliable production delivery: cloud infrastructure, CI/CD automation, Kubernetes, Infrastructure as Code, observability, security, and operational efficiency.
-                    </p>
-                    <p class="text-slate-400 leading-8">
-                        I approach DevOps as an engineering discipline—not a list of tools. The goal is to make delivery safer, infrastructure reproducible, systems easier to operate, and cloud environments easier to scale and optimize.
-                    </p>
-                </div>
+            <p class="text-slate-400 leading-8 mb-6">
+              I've spent the last three years building and shipping web
+              applications for German companies — React and Next.js on the front
+              end, Node.js and SQL behind it. Working in real product teams
+              taught me that writing the feature is only half the job; getting
+              it deployed safely and keeping it running is the other half.
+            </p>
+            <p class="text-slate-400 leading-8 mb-6">
+              That's why I'm deliberately building depth in infrastructure:
+              Linux, Docker, Kubernetes, Terraform, CI/CD pipelines and the
+              major cloud platforms. My physics background is a big part of how
+              I work — I'm comfortable sitting with a system I don't understand
+              yet until I can explain why it behaves the way it does.
+            </p>
+            <p class="text-slate-400 leading-8">
+              I'm based in Germany with a valid residence and work permit, and
+              I'm looking for a team where I can contribute as a full-stack
+              developer while growing into platform and cloud work.
+            </p>
+          </div>
 
-                <div class="glass rounded-3xl overflow-hidden">
-                    <div class="flex items-center gap-2 px-5 py-4 border-b border-white/10 bg-slate-950/30">
-                        <span class="terminal-dot bg-red-400"></span>
-                        <span class="terminal-dot bg-amber-400"></span>
-                        <span class="terminal-dot bg-emerald-400"></span>
-                        <span class="ml-3 code-font text-xs text-slate-500">production-mindset.sh</span>
-                    </div>
-                    <div class="p-6 md:p-8 code-font text-sm leading-8">
-                        <p><span class="text-indigo-400">$</span> optimize delivery</p>
-                        <p class="text-slate-500">→ automate build, test and deployment</p>
-                        <p><span class="text-indigo-400">$</span> engineer reliability</p>
-                        <p class="text-slate-500">→ health checks, HA, scaling, rollback</p>
-                        <p><span class="text-indigo-400">$</span> improve visibility</p>
-                        <p class="text-slate-500">→ metrics, logs, dashboards, alerts</p>
-                        <p><span class="text-indigo-400">$</span> reduce cloud waste</p>
-                        <p class="text-slate-500">→ right-size, automate, measure, iterate</p>
-                    </div>
-                </div>
+          <div class="glass rounded-3xl overflow-hidden">
+            <div
+              class="flex items-center gap-2 px-5 py-4 border-b border-white/10 bg-slate-950/30"
+            >
+              <span class="terminal-dot bg-red-400"></span>
+              <span class="terminal-dot bg-amber-400"></span>
+              <span class="terminal-dot bg-emerald-400"></span>
+              <span class="ml-3 code-font text-xs text-slate-500">whoami</span>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-                <div class="focus-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-bolt text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Faster Delivery</h3>
-                    <p class="text-sm text-slate-500">Automated pipelines with quality gates and repeatable deployment workflows.</p>
-                </div>
-                <div class="focus-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-server text-indigo-400 text-2xl mb-4" aria-hidden="true"></i>
-                    <h3 class="text-white font-semibold mb-2">Reliable Systems</h3>
-                    <p class="text-sm text-slate-500">Design for resiliency, scaling, recovery, health checks, and controlled change.</p>
-                </div>
-                <div class="focus-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-chart-line text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Observability</h3>
-                    <p class="text-sm text-slate-500">Metrics, logs, dashboards, alerts, and actionable operational visibility.</p>
-                </div>
-                <div class="focus-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-coins text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Cloud Efficiency</h3>
-                    <p class="text-sm text-slate-500">Build infrastructure that can scale without losing sight of cost and waste.</p>
-                </div>
+            <div class="p-6 md:p-8 code-font text-sm leading-8">
+              <p><span class="text-indigo-400">$</span> role</p>
+              <p class="text-slate-500">
+                → full-stack developer, React / TypeScript / Node
+              </p>
+              <p><span class="text-indigo-400">$</span> currently</p>
+              <p class="text-slate-500">→ Hitachi Rail, Stuttgart</p>
+              <p><span class="text-indigo-400">$</span> learning</p>
+              <p class="text-slate-500">→ Docker, Kubernetes, Terraform, AWS</p>
+              <p><span class="text-indigo-400">$</span> languages</p>
+              <p class="text-slate-500">
+                → English (C1), German (B1 → B2), Bengali (native)
+              </p>
+              <p><span class="text-indigo-400">$</span> work_permit</p>
+              <p class="text-slate-500">
+                → valid, no visa sponsorship required
+              </p>
+              <p><span class="text-indigo-400">$</span> based_in</p>
+              <p class="text-slate-500">
+                → Berlin, open to relocation within Germany
+              </p>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="py-24 px-6 bg-slate-900/50 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="section-number text-xl">02.</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Technical Arsenal</h2>
-            </div>
+    <!-- ============ EXPERIENCE ============ -->
+    <section
+      id="experience"
+      class="py-24 px-6 bg-slate-900/50 border-y border-white/5"
+    >
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
+          Experience
+        </h2>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-cloud text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">Cloud</h3>
-                    <p class="text-sm text-slate-500 leading-6">AWS, Azure, GCP, VPC, IAM, Load Balancers</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-brands fa-docker text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">Containers</h3>
-                    <p class="text-sm text-slate-500 leading-6">Docker, Kubernetes, EKS, Helm</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-code text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">Infrastructure as Code</h3>
-                    <p class="text-sm text-slate-500 leading-6">Terraform, CloudFormation, reusable modules</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-code-merge text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">CI/CD</h3>
-                    <p class="text-sm text-slate-500 leading-6">GitHub Actions, Jenkins, GitLab CI</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-rotate text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">GitOps & Automation</h3>
-                    <p class="text-sm text-slate-500 leading-6">Argo CD, Ansible, Python, Bash</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-chart-area text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">Observability</h3>
-                    <p class="text-sm text-slate-500 leading-6">Prometheus, Grafana, Loki, ELK, Alerting</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-lock text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">DevSecOps</h3>
-                    <p class="text-sm text-slate-500 leading-6">IAM, secrets, RBAC, Trivy, SonarQube</p>
-                </div>
-                <div class="skill-card p-6 glass rounded-2xl hover:border-indigo-500/50">
-                    <i class="fa-solid fa-terminal text-3xl text-indigo-400 mb-4"></i>
-                    <h3 class="text-white font-semibold mb-3">Systems & Networking</h3>
-                    <p class="text-sm text-slate-500 leading-6">Linux, Git, DNS, TLS, networking fundamentals</p>
-                </div>
+        <div class="timeline space-y-8">
+          <article class="timeline-item current glass rounded-2xl p-6 md:p-7">
+            <div
+              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
+            >
+              <h3 class="text-xl font-bold text-white">
+                Full-Stack Developer (Working Student)
+              </h3>
+              <span class="code-font text-xs text-cyan-400"
+                >Nov 2025 — present</span
+              >
             </div>
+            <p class="text-indigo-300 text-sm mb-4">
+              Hitachi Rail · Ditzingen, Stuttgart, Germany
+            </p>
+            <ul
+              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
+            >
+              <li>
+                <span class="text-slate-200 font-semibold"
+                  >Performance &amp; reliability:</span
+                >
+                optimized SQL queries behind reporting dashboards, cutting
+                average query load time by around 30%.
+              </li>
+              <li>
+                Built 10+ accessible, reusable React + MUI components across
+                four product areas, unifying design patterns across the UI.
+              </li>
+              <li>
+                Fixed 20+ critical bugs across the full stack and raised
+                automated test coverage with targeted unit and integration
+                tests.
+              </li>
+              <li>
+                Work daily in a Dockerized development workflow and a
+                CI/CD-driven release process alongside the platform team.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="tag">React</span><span class="tag">TypeScript</span
+              ><span class="tag">MUI</span><span class="tag">Node.js</span
+              ><span class="tag">SQL</span><span class="tag">Docker</span>
+            </div>
+          </article>
+
+          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
+            <div
+              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
+            >
+              <h3 class="text-xl font-bold text-white">
+                Frontend Developer (Full-time)
+              </h3>
+              <span class="code-font text-xs text-slate-500"
+                >Feb 2025 — Jun 2025</span
+              >
+            </div>
+            <p class="text-indigo-300 text-sm mb-4">
+              Photovoltaikvision GmbH (PVision) · Stuttgart, Germany
+            </p>
+            <ul
+              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
+            >
+              <li>
+                Implemented and improved 5+ user-facing React features, cutting
+                reported UI bugs by around 25%.
+              </li>
+              <li>
+                Built resilient data-fetching layers and integrated three
+                third-party APIs supporting core product features under
+                production load.
+              </li>
+              <li>
+                Kept the codebase modular and consistent through code reviews
+                and shared team conventions.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="tag">React</span><span class="tag">JavaScript</span
+              ><span class="tag">REST APIs</span><span class="tag">CSS</span>
+            </div>
+          </article>
+
+          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
+            <div
+              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
+            >
+              <h3 class="text-xl font-bold text-white">
+                Junior Full-Stack Developer (Full-time)
+              </h3>
+              <span class="code-font text-xs text-slate-500"
+                >Jul 2023 — Dec 2024</span
+              >
+            </div>
+            <p class="text-indigo-300 text-sm mb-4">
+              Q4U Experience Design Studio · Bonn, Germany
+            </p>
+            <ul
+              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
+            >
+              <li>
+                <span class="text-slate-200 font-semibold"
+                  >Containerization:</span
+                >
+                supported Docker-based local development environments across the
+                team, standardizing setup and reducing environment drift.
+              </li>
+              <li>
+                Built 8+ responsive React + Bootstrap front ends from Figma
+                designs using accessible, reusable component libraries.
+              </li>
+              <li>
+                Developed 15+ RESTful CRUD endpoints with Node.js/Express,
+                MongoDB and PostgreSQL via Prisma ORM.
+              </li>
+              <li>
+                Increased test coverage by around 40% through Jest unit and
+                integration tests and active code review.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="tag">React</span><span class="tag">Node.js</span
+              ><span class="tag">Express</span
+              ><span class="tag">PostgreSQL</span
+              ><span class="tag">MongoDB</span><span class="tag">Prisma</span
+              ><span class="tag">Docker</span><span class="tag">Jest</span>
+            </div>
+          </article>
+
+          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
+            <div
+              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
+            >
+              <h3 class="text-xl font-bold text-white">
+                Full-Stack Web Developer, Internship (MERN, Remote)
+              </h3>
+              <span class="code-font text-xs text-slate-500"
+                >Jun 2022 — Feb 2023</span
+              >
+            </div>
+            <p class="text-indigo-300 text-sm mb-4">
+              Programming Hero · Dhaka, Bangladesh
+            </p>
+            <ul
+              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
+            >
+              <li>
+                Contributed to feature development across 3+ MERN stack
+                projects, applying clean-code standards and collaborative
+                workflows.
+              </li>
+              <li>
+                Debugged and resolved issues across front end and back end to
+                improve reliability and user experience.
+              </li>
+            </ul>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span class="tag">MongoDB</span><span class="tag">Express</span
+              ><span class="tag">React</span><span class="tag">Node.js</span>
+            </div>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
-                <div class="flex items-center gap-4">
-                    <span class="section-number text-xl">03.</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Projects & Impact</h2>
-                </div>
-                <p class="text-sm text-slate-500 max-w-xl">Selected work showing how I connect infrastructure, automation, reliability, and measurable outcomes.</p>
-            </div>
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="py-24 px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Skills</h2>
+        <p class="text-slate-500 mb-12 max-w-2xl">
+          Split honestly between what I use professionally today and what I'm
+          actively building through my DevOps programme and personal projects.
+        </p>
 
-            <div class="grid lg:grid-cols-2 gap-8">
-                <article class="project-card group relative overflow-hidden rounded-3xl glass p-8 hover:border-indigo-500/50">
-                    <div class="flex justify-between items-start mb-7">
-                        <div class="p-3 bg-indigo-500/10 rounded-xl">
-                            <i class="fa-solid fa-network-wired text-indigo-400 text-2xl"></i>
-                        </div>
-                        <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" aria-label="View Kubernetes project on GitHub">
-                            <i class="fa-brands fa-github text-2xl"></i>
-                        </a>
-                    </div>
-
-                    <p class="code-font text-xs text-indigo-400 mb-3">KUBERNETES / AWS / TERRAFORM</p>
-                    <h3 class="text-2xl font-bold text-white mb-5">Multi-Region Kubernetes Infrastructure</h3>
-
-                    <div class="space-y-5 text-sm leading-7">
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Challenge</p>
-                            <p class="text-slate-400">Improve resilience and reduce downtime for workloads running in AWS.</p>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Solution</p>
-                            <p class="text-slate-400">Implemented highly available Kubernetes infrastructure across AWS regions using Terraform and Amazon EKS.</p>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Impact</p>
-                            <p class="text-white font-semibold">Reduced downtime by 40% while making infrastructure repeatable through code.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 mt-7 text-[10px] font-bold uppercase tracking-wider">
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">Terraform</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">AWS</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">EKS</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">Kubernetes</span>
-                    </div>
-
-                    <a href="#k8s-evidence" class="inline-flex items-center mt-7 text-sm font-semibold text-indigo-300 hover:text-white transition">
-                        View Production Evidence <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
-                    </a>
-                </article>
-
-                <article class="project-card group relative overflow-hidden rounded-3xl glass p-8 hover:border-cyan-500/50">
-                    <div class="flex justify-between items-start mb-7">
-                        <div class="p-3 bg-cyan-500/10 rounded-xl">
-                            <i class="fa-solid fa-bolt text-cyan-400 text-2xl"></i>
-                        </div>
-                        <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition" aria-label="View CI/CD project on GitHub">
-                            <i class="fa-brands fa-github text-2xl"></i>
-                        </a>
-                    </div>
-
-                    <p class="code-font text-xs text-cyan-400 mb-3">CI/CD / AUTOMATION / SERVERLESS</p>
-                    <h3 class="text-2xl font-bold text-white mb-5">Serverless CI/CD Automation</h3>
-
-                    <div class="space-y-5 text-sm leading-7">
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Challenge</p>
-                            <p class="text-slate-400">Manual deployment work was limiting the speed and consistency of microservice releases.</p>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Solution</p>
-                            <p class="text-slate-400">Automated deployment workflows for 50+ microservices using GitHub Actions and AWS Lambda.</p>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Impact</p>
-                            <p class="text-white font-semibold">Improved deployment frequency by 3× with a more repeatable delivery process.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 mt-7 text-[10px] font-bold uppercase tracking-wider">
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">GitHub Actions</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">AWS Lambda</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">Python</span>
-                        <span class="px-2.5 py-1.5 bg-slate-800 rounded">Serverless</span>
-                    </div>
-
-                    <a href="#cicd-evidence" class="inline-flex items-center mt-7 text-sm font-semibold text-cyan-300 hover:text-white transition">
-                        View Production Evidence <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
-                    </a>
-                </article>
-            </div>
-
-            <div id="project-evidence" class="mt-14">
-                <div class="mb-8 max-w-3xl">
-                    <p class="code-font text-xs text-indigo-400 mb-3">PRODUCTION EVIDENCE</p>
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Case Studies</h3>
-                </div>
-
-                <!-- Kubernetes evidence -->
-                <details id="k8s-evidence" class="production-evidence glass rounded-3xl overflow-hidden mb-8" open>
-                    <summary class="cursor-pointer px-6 md:px-8 py-6 flex items-center justify-between gap-4 hover:bg-white/[0.02] transition">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-indigo-500/10 rounded-xl"><i class="fa-solid fa-diagram-project text-indigo-400"></i></div>
-                            <div>
-                                <p class="code-font text-[11px] text-indigo-400 mb-1">CASE STUDY 01</p>
-                                <h4 class="text-xl font-bold text-white">Multi-Region Kubernetes Infrastructure — Evidence Pack</h4>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down evidence-chevron text-slate-500"></i>
-                    </summary>
-
-                    <div class="px-6 md:px-8 pb-8 border-t border-white/5">
-                        <div class="pt-8">
-                            <div class="flex items-center justify-between gap-4 mb-5">
-                                <div>
-                                    <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Architecture</p>
-                                    <p class="text-sm text-slate-400">Derived only from the technologies and multi-region design already described in this portfolio.</p>
-                                </div>
-                                <span class="hidden md:inline-flex text-[10px] px-2.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">VERIFIED SCOPE</span>
-                            </div>
-
-                            <div class="evidence-grid-card rounded-2xl p-5 md:p-7 overflow-x-auto">
-                                <div class="flex items-center gap-3 min-w-[760px] justify-center code-font text-xs">
-                                    <div class="architecture-node"><i class="fa-brands fa-github text-lg mb-2 text-white"></i><br>Infrastructure Code</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-solid fa-code text-lg mb-2 text-indigo-300"></i><br>Terraform</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-brands fa-aws text-lg mb-2 text-amber-300"></i><br>AWS</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-solid fa-diagram-project text-lg mb-2 text-cyan-300"></i><br>Region A / EKS</div>
-                                    <div class="text-slate-600 text-lg">+</div>
-                                    <div class="architecture-node"><i class="fa-solid fa-diagram-project text-lg mb-2 text-cyan-300"></i><br>Region B / EKS</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-brands fa-readme text-indigo-300"></i><h5 class="font-semibold text-white">README</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Document the problem, architecture decisions, prerequisites, repository structure, trade-offs, and the verified 40% downtime reduction.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-rocket text-indigo-300"></i><h5 class="font-semibold text-white">Deployment</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Show the actual Terraform workflow: initialize, validate, plan, review, apply, verify cluster access, then deploy workloads.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-chart-line text-indigo-300"></i><h5 class="font-semibold text-white">Monitoring</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Publish the real monitoring approach used in the project: cluster health, workload availability, resource pressure, logs, dashboards, and alert conditions.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-shield-halved text-indigo-300"></i><h5 class="font-semibold text-white">Security Controls</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Document the controls actually implemented—such as identity boundaries, secrets handling, Kubernetes access, network controls, encryption, and image policy.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-coins text-indigo-300"></i><h5 class="font-semibold text-white">Cost Considerations</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Explain why multi-region resilience is worth the extra spend, what resources drive cost, and where right-sizing or autoscaling can reduce waste.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-broom text-indigo-300"></i><h5 class="font-semibold text-white">Cleanup Strategy</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Provide a deterministic teardown path: remove workloads that create cloud dependencies, then destroy infrastructure and verify no billable resources remain.</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-7 flex flex-wrap gap-3">
-                            <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-500 transition"><i class="fa-brands fa-github mr-2"></i> Repository</a>
-                            <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 glass text-white rounded-xl text-sm font-semibold hover:bg-white/5 transition"><i class="fa-brands fa-readme mr-2"></i> README</a>
-                            <span class="inline-flex items-center px-4 py-3 text-xs text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i>Replace profile-level links with the exact project repository.</span>
-                        </div>
-                    </div>
-                </details>
-
-                <!-- CI/CD evidence -->
-                <details id="cicd-evidence" class="production-evidence glass rounded-3xl overflow-hidden">
-                    <summary class="cursor-pointer px-6 md:px-8 py-6 flex items-center justify-between gap-4 hover:bg-white/[0.02] transition">
-                        <div class="flex items-center gap-4">
-                            <div class="p-3 bg-cyan-500/10 rounded-xl"><i class="fa-solid fa-code-branch text-cyan-400"></i></div>
-                            <div>
-                                <p class="code-font text-[11px] text-cyan-400 mb-1">CASE STUDY 02</p>
-                                <h4 class="text-xl font-bold text-white">Serverless CI/CD Automation — Evidence Pack</h4>
-                            </div>
-                        </div>
-                        <i class="fa-solid fa-chevron-down evidence-chevron text-slate-500"></i>
-                    </summary>
-
-                    <div class="px-6 md:px-8 pb-8 border-t border-white/5">
-                        <div class="pt-8">
-                            <div class="flex items-center justify-between gap-4 mb-5">
-                                <div>
-                                    <p class="text-xs uppercase tracking-wider text-slate-500 font-bold mb-1">Architecture</p>
-                                    <p class="text-sm text-slate-400">Based on the portfolio's existing GitHub Actions + AWS Lambda automation for 50+ microservices.</p>
-                                </div>
-                                <span class="hidden md:inline-flex text-[10px] px-2.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">VERIFIED SCOPE</span>
-                            </div>
-
-                            <div class="evidence-grid-card rounded-2xl p-5 md:p-7 overflow-x-auto">
-                                <div class="flex items-center gap-3 min-w-[760px] justify-center code-font text-xs">
-                                    <div class="architecture-node"><i class="fa-solid fa-code-commit text-lg mb-2 text-white"></i><br>Code Change</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-brands fa-github text-lg mb-2 text-white"></i><br>GitHub</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-solid fa-gears text-lg mb-2 text-cyan-300"></i><br>GitHub Actions</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-brands fa-aws text-lg mb-2 text-amber-300"></i><br>AWS Lambda</div>
-                                    <i class="fa-solid fa-arrow-right architecture-arrow"></i>
-                                    <div class="architecture-node"><i class="fa-solid fa-cubes text-lg mb-2 text-indigo-300"></i><br>50+ Services</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-7">
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-brands fa-readme text-cyan-300"></i><h5 class="font-semibold text-white">README</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Explain the release problem, workflow trigger, automation responsibilities, failure path, repository layout, and the verified 3× deployment-frequency improvement.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-list-check text-cyan-300"></i><h5 class="font-semibold text-white">Deployment Flow</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Show the exact stages used before production deployment—tests, build/package steps, approvals, automation invocation, verification, and rollback if applicable.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-eye text-cyan-300"></i><h5 class="font-semibold text-white">Monitoring</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Document how failed workflows and Lambda execution failures are detected, what release signals are observed, and how operators know a deployment is healthy.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-user-shield text-cyan-300"></i><h5 class="font-semibold text-white">Security Controls</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Show how credentials are protected, which identities can deploy, how permissions are scoped, and what prevents an unreviewed change from reaching production.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-scale-balanced text-cyan-300"></i><h5 class="font-semibold text-white">Cost Considerations</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Describe the cost model of event-driven automation, execution frequency, retained artifacts/logs, and when serverless automation is cheaper than always-on infrastructure.</p>
-                            </div>
-                            <div class="evidence-grid-card rounded-2xl p-5">
-                                <div class="flex items-center gap-3 mb-3"><i class="fa-solid fa-trash-can-arrow-up text-cyan-300"></i><h5 class="font-semibold text-white">Cleanup Strategy</h5></div>
-                                <p class="text-sm text-slate-500 leading-6">Document how to remove temporary artifacts, obsolete automation resources, stale credentials, logs beyond retention, and test infrastructure without affecting production services.</p>
-                            </div>
-                        </div>
-
-                        <div class="mt-7 flex flex-wrap gap-3">
-                            <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 bg-cyan-600 text-white rounded-xl text-sm font-semibold hover:bg-cyan-500 transition"><i class="fa-brands fa-github mr-2"></i> Repository</a>
-                            <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-3 glass text-white rounded-xl text-sm font-semibold hover:bg-white/5 transition"><i class="fa-brands fa-readme mr-2"></i> README</a>
-                            <span class="inline-flex items-center px-4 py-3 text-xs text-slate-500"><i class="fa-solid fa-circle-info mr-2"></i>Replace profile-level links with the exact project repository.</span>
-                        </div>
-                    </div>
-                </details>
-            </div>
+        <h3 class="text-white font-semibold mb-5 text-lg">
+          Professional stack
+        </h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
+            <i class="fa-brands fa-react text-3xl text-indigo-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">Front end</h4>
+            <p class="text-sm text-slate-500 leading-6">
+              React, Next.js, TypeScript, Redux, MUI, Tailwind, Bootstrap
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
+            <i class="fa-brands fa-node-js text-3xl text-indigo-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">Back end &amp; APIs</h4>
+            <p class="text-sm text-slate-500 leading-6">
+              Node.js, Express, REST APIs, GraphQL, JWT authentication
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
+            <i class="fa-solid fa-database text-3xl text-indigo-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">Data</h4>
+            <p class="text-sm text-slate-500 leading-6">
+              PostgreSQL, SQL, MongoDB, Prisma, schema design, query
+              optimization
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
+            <i
+              class="fa-solid fa-code-branch text-3xl text-indigo-400 mb-4"
+            ></i>
+            <h4 class="text-white font-semibold mb-3">
+              Testing &amp; workflow
+            </h4>
+            <p class="text-sm text-slate-500 leading-6">
+              Jest, Docker, CI/CD, Git &amp; GitHub, code review, Scrum/Agile
+            </p>
+          </div>
         </div>
+
+        <h3 class="text-white font-semibold mb-5 text-lg">
+          Building now — DevOps &amp; Cloud
+        </h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
+            <i class="fa-solid fa-cloud text-3xl text-cyan-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">Cloud platforms</h4>
+            <p class="text-sm text-slate-500 leading-6">
+              AWS (EC2, S3, ECS/ECR), Azure, GCP — compute, networking, IAM,
+              storage
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
+            <i class="fa-brands fa-docker text-3xl text-cyan-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">Orchestration</h4>
+            <p class="text-sm text-slate-500 leading-6">
+              Kubernetes, Helm, container registries, Docker Compose
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
+            <i class="fa-solid fa-cubes text-3xl text-cyan-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">
+              Infrastructure as Code
+            </h4>
+            <p class="text-sm text-slate-500 leading-6">
+              Terraform, Ansible, declarative and reproducible environments
+            </p>
+          </div>
+          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
+            <i class="fa-solid fa-chart-line text-3xl text-cyan-400 mb-4"></i>
+            <h4 class="text-white font-semibold mb-3">
+              CI/CD &amp; monitoring
+            </h4>
+            <p class="text-sm text-slate-500 leading-6">
+              Jenkins, GitHub Actions, Prometheus, Grafana, ELK, Bash, Python
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Production Mindset -->
-    <section id="production" class="py-24 px-6 bg-slate-900/50 border-y border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <span class="section-number text-xl">04.</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">How I Think About Production</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
-                <div class="focus-card glass rounded-2xl p-6 hover:border-indigo-500/50">
-                    <i class="fa-solid fa-heart-pulse text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Reliability</h3>
-                    <p class="text-sm text-slate-500 leading-6">Health checks, HA, scaling, recovery, graceful failure.</p>
-                </div>
-                <div class="focus-card glass rounded-2xl p-6 hover:border-indigo-500/50">
-                    <i class="fa-solid fa-lock text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Security</h3>
-                    <p class="text-sm text-slate-500 leading-6">Least privilege, secrets, scanning, RBAC, TLS.</p>
-                </div>
-                <div class="focus-card glass rounded-2xl p-6 hover:border-indigo-500/50">
-                    <i class="fa-solid fa-eye text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Observability</h3>
-                    <p class="text-sm text-slate-500 leading-6">Metrics, logs, dashboards, alerts, useful signals.</p>
-                </div>
-                <div class="focus-card glass rounded-2xl p-6 hover:border-indigo-500/50">
-                    <i class="fa-solid fa-code-branch text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Safe Delivery</h3>
-                    <p class="text-sm text-slate-500 leading-6">Quality gates, rollout controls, rollback, approvals.</p>
-                </div>
-                <div class="focus-card glass rounded-2xl p-6 hover:border-indigo-500/50">
-                    <i class="fa-solid fa-coins text-indigo-400 text-2xl mb-4"></i>
-                    <h3 class="text-white font-semibold mb-2">Cost</h3>
-                    <p class="text-sm text-slate-500 leading-6">Right-sizing, lifecycle policies, autoscaling, visibility.</p>
-                </div>
-            </div>
+    <!-- ============ PROJECTS ============ -->
+    <section
+      id="projects"
+      class="py-24 px-6 bg-slate-900/50 border-y border-white/5"
+    >
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold text-white">Projects</h2>
+          <p class="text-sm text-slate-500 max-w-xl">
+            Things I've built, with the source available to read.
+          </p>
         </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <article class="card group rounded-3xl glass p-8">
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-indigo-500/10 rounded-xl">
+                <i class="fa-solid fa-truck-fast text-indigo-400 text-2xl"></i>
+              </div>
+              <!-- TODO: link this to the ZapShift repo -->
+              <a
+                href="https://github.com/hossenra"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-slate-400 hover:text-white transition"
+                aria-label="View ZapShift on GitHub"
+                ><i class="fa-brands fa-github text-2xl"></i
+              ></a>
+            </div>
+            <p class="code-font text-xs text-indigo-400 mb-3">
+              Full-stack · personal project
+            </p>
+            <h3 class="text-xl font-bold text-white mb-4">
+              ZapShift — parcel delivery platform
+            </h3>
+            <div class="space-y-4 text-sm leading-7">
+              <p class="text-slate-400">
+                A parcel booking and delivery platform with three role-based
+                dashboards — customer, driver and admin — plus real-time map
+                tracking and payment integration.
+              </p>
+              <p class="text-slate-400">
+                Built end to end: auth, data model, API layer and the three
+                separate UIs that read from it.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="tag">React 19</span
+              ><span class="tag">TypeScript</span
+              ><span class="tag">TanStack Query</span
+              ><span class="tag">Node.js</span><span class="tag">MongoDB</span
+              ><span class="tag">Stripe</span>
+            </div>
+          </article>
+
+          <article class="card group rounded-3xl glass p-8">
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-cyan-500/10 rounded-xl">
+                <i class="fa-brands fa-docker text-cyan-400 text-2xl"></i>
+              </div>
+              <span class="badge-progress">In progress</span>
+            </div>
+            <p class="code-font text-xs text-cyan-400 mb-3">
+              Deployment &amp; automation
+            </p>
+            <h3 class="text-xl font-bold text-white mb-4">
+              ZapShift on AWS — containerized delivery
+            </h3>
+            <div class="space-y-4 text-sm leading-7">
+              <p class="text-slate-400">
+                Taking ZapShift from "runs on my machine" to a deployed service:
+                Docker images, a GitHub Actions pipeline that builds and ships
+                on every push, and AWS hosting.
+              </p>
+              <p class="text-slate-400">
+                Prometheus and Grafana for basic health and latency signals once
+                it's live.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="tag">Docker</span
+              ><span class="tag">GitHub Actions</span
+              ><span class="tag">AWS</span><span class="tag">Prometheus</span
+              ><span class="tag">Grafana</span>
+            </div>
+          </article>
+
+          <article class="card group rounded-3xl glass placeholder p-8">
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 bg-emerald-500/10 rounded-xl">
+                <i class="fa-solid fa-cubes text-emerald-400 text-2xl"></i>
+              </div>
+              <span class="badge-progress">In progress</span>
+            </div>
+            <p class="code-font text-xs text-emerald-400 mb-3">
+              Infrastructure as Code
+            </p>
+            <h3 class="text-xl font-bold text-white mb-4">Terraform lab</h3>
+            <div class="space-y-4 text-sm leading-7">
+              <p class="text-slate-400">
+                Provisioning a small but complete environment with Terraform —
+                network, compute, and the application running on top of it.
+              </p>
+              <p class="text-slate-400">
+                Documented with the teardown steps, so the whole thing can be
+                created and destroyed repeatably.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="tag">Terraform</span><span class="tag">AWS</span
+              ><span class="tag">Linux</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Recruiter / CTA -->
-    <section class="py-24 px-6">
-        <div class="max-w-5xl mx-auto glass rounded-3xl p-8 md:p-12 text-center overflow-hidden relative">
-            <div class="absolute -top-20 -right-20 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-24 -left-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
-            <div class="relative">
-                <p class="code-font text-xs text-indigo-400 mb-3">BUILD • AUTOMATE • OBSERVE • IMPROVE</p>
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-5">The tools are not the story. The outcome is.</h2>
-                <p class="text-slate-400 max-w-3xl mx-auto leading-8 mb-8">I use cloud, containers, automation, and observability to make software delivery safer, systems more reliable, infrastructure reproducible, and operations easier to scale.</p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition">
-                        <i class="fa-brands fa-github mr-2"></i> GitHub
-                    </a>
-                    <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 glass text-white font-bold rounded-xl hover:bg-white/5 transition">
-                        <i class="fa-solid fa-file-arrow-down mr-2"></i> Resume
-                    </a>
-                </div>
+    <!-- ============ EDUCATION ============ -->
+    <section id="education" class="py-24 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
+          Education &amp; training
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card glass rounded-2xl p-7 hover:border-indigo-500/50">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <i
+                class="fa-solid fa-graduation-cap text-indigo-400 text-2xl"
+              ></i>
+              <span class="code-font text-xs text-cyan-400"
+                >Oct 2023 — present</span
+              >
             </div>
+            <h3 class="text-white font-semibold text-lg mb-1">M.Sc. Physics</h3>
+            <p class="text-sm text-slate-500">
+              BTU Cottbus-Senftenberg, Germany
+            </p>
+          </div>
+
+          <div class="card glass rounded-2xl p-7 hover:border-indigo-500/50">
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <i class="fa-solid fa-server text-cyan-400 text-2xl"></i>
+              <span class="code-font text-xs text-cyan-400">2026</span>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-1">
+              DevOps &amp; Cloud Engineering bootcamp
+            </h3>
+            <p class="text-sm text-slate-500">
+              Linux, CI/CD, Docker, Kubernetes, Terraform, Ansible, Jenkins,
+              Prometheus, Grafana, ELK, AWS / Azure / GCP, Python
+            </p>
+          </div>
+
+          <div
+            class="card glass rounded-2xl p-7 hover:border-indigo-500/50 md:col-span-2"
+          >
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <i class="fa-solid fa-atom text-indigo-400 text-2xl"></i>
+              <span class="code-font text-xs text-slate-500">2010 — 2014</span>
+            </div>
+            <h3 class="text-white font-semibold text-lg mb-1">B.Sc. Physics</h3>
+            <p class="text-sm text-slate-500">
+              National University of Bangladesh
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer / Contact -->
+    <!-- ============ CONTACT ============ -->
     <footer id="contact" class="py-20 border-t border-white/5 bg-slate-950/30">
-        <div class="max-w-4xl mx-auto text-center px-6">
-            <p class="code-font text-xs text-indigo-400 mb-3">AVAILABLE FOR THE RIGHT CHALLENGE</p>
-            <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">Let's Build Something Scalable</h2>
-            <p class="text-slate-400 mb-8 max-w-2xl mx-auto leading-7">Open to opportunities where I can work on cloud infrastructure, DevOps automation, platform engineering, reliability, or production systems.</p>
+      <div class="max-w-4xl mx-auto text-center px-6">
+        <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">
+          Let's talk
+        </h2>
+        <p class="text-slate-400 mb-8 max-w-2xl mx-auto leading-7">
+          I'm looking for full-stack, DevOps or cloud engineering roles in
+          Germany. If you think I'd be a fit for your team, I'd be glad to hear
+          from you.
+        </p>
 
-            <div class="flex justify-center space-x-6 text-2xl mb-8">
-                <a href="https://www.linkedin.com/in/Nure" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition" aria-label="LinkedIn profile"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/bongodev" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition" aria-label="GitHub profile"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:nure@gmail.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-
-            <p class="text-sm text-slate-500">LinkedIn • GitHub • Resume • Email</p>
-            <p class="mt-12 text-xs text-slate-600 code-font">Built with 💖 | &copy; 2026 Nure Siddiq. All rights reserved.</p>
+        <div class="flex justify-center space-x-6 text-2xl mb-8">
+          <a
+            href="https://www.linkedin.com/in/razibul-hossen"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-indigo-400 transition"
+            aria-label="LinkedIn profile"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/hossenra"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-slate-400 hover:text-indigo-400 transition"
+            aria-label="GitHub profile"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="mailto:smraju1234@gmail.com"
+            class="text-slate-400 hover:text-indigo-400 transition"
+            aria-label="Send email"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
         </div>
-    </footer>
 
-</body>
+        <a
+          href="mailto:smraju1234@gmail.com"
+          class="inline-block px-7 py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition"
+        >
+          Send me an email
+        </a>
+
+        <p class="mt-12 text-xs text-slate-600 code-font">
+          &copy; 2026 Razibul Hossen · Berlin, Germany
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
