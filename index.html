@@ -5,841 +5,1297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Razibul Hossen — Full-Stack Developer (React, TypeScript, Next.js, Node.js) based in Germany, moving into DevOps and Cloud Engineering."
+      content="Razibul Hossen, full-stack developer and Cloud &amp; DevOps engineer in Berlin. React, TypeScript, Node.js, CI/CD pipelines, AWS, Docker, Kubernetes, Terraform and Nginx."
     />
-    <meta name="theme-color" content="#0f172a" />
-    <title>Razibul Hossen | Full-Stack Developer → DevOps &amp; Cloud</title>
+    <meta name="theme-color" content="#F2F4F3" />
+    <title>Razibul Hossen | Full-Stack &amp; Cloud/DevOps Engineer, Berlin</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
     <style>
+      :root {
+        --ground: #f2f4f3;
+        --surface: #ffffff;
+        --ink: #17211e;
+        --muted: #56645f;
+        --rule: #d3dbd8;
+        --pine: #1e6b57;
+        --pine-soft: #e3efea;
+        --amber: #9a6a14;
+        --amber-soft: #f6eedc;
+        --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+        --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+        --wrap: 1120px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
       html {
         scroll-behavior: smooth;
+        scroll-padding-top: 88px;
       }
+
       body {
-        font-family: "Inter", sans-serif;
-      }
-      .code-font {
-        font-family: "Fira Code", monospace;
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.035);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.09);
-      }
-      .grid-bg {
-        background-image:
-          linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
-        background-size: 42px 42px;
-      }
-      .gradient-text {
-        background: linear-gradient(90deg, #818cf8, #22d3ee);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .terminal-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-      }
-      .card {
-        transition:
-          transform 0.25s ease,
-          border-color 0.25s ease,
-          background-color 0.25s ease;
-      }
-      .card:hover {
-        transform: translateY(-4px);
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 1.0625rem;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
 
-      /* Experience timeline */
-      .timeline {
-        position: relative;
-        padding-left: 28px;
-      }
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 7px;
-        top: 6px;
-        bottom: 6px;
-        width: 2px;
-        background: linear-gradient(
-          180deg,
-          rgba(129, 140, 248, 0.55),
-          rgba(34, 211, 238, 0.15)
-        );
-      }
-      .timeline-item {
-        position: relative;
-      }
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -28px;
-        top: 8px;
-        width: 16px;
-        height: 16px;
-        border-radius: 999px;
-        background: #0f172a;
-        border: 2px solid #818cf8;
-      }
-      .timeline-item.current::before {
-        background: #22d3ee;
-        border-color: #22d3ee;
-        box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.18);
+      a {
+        color: inherit;
       }
 
-      .tag {
-        font-size: 11px;
-        padding: 5px 10px;
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid var(--pine);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      ol,
+      dl,
+      dd {
+        margin: 0;
+      }
+
+      .wrap {
+        width: min(var(--wrap), 100% - 48px);
+        margin-inline: auto;
+      }
+
+      .skip {
+        position: absolute;
+        left: -9999px;
+      }
+      .skip:focus {
+        left: 16px;
+        top: 16px;
+        z-index: 100;
+        background: var(--ink);
+        color: var(--surface);
+        padding: 8px 14px;
         border-radius: 6px;
-        background: rgba(30, 41, 59, 0.9);
-        color: #cbd5e1;
+      }
+
+      /* ---------- Header ---------- */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(242, 244, 243, 0.92);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--rule);
+      }
+      .site-header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        height: 64px;
+      }
+      .brand {
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: -0.01em;
+      }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        font-size: 0.9375rem;
+      }
+      .site-nav a {
+        text-decoration: none;
+        color: var(--muted);
+      }
+      .site-nav a:hover {
+        color: var(--ink);
+      }
+      .site-nav .nav-cv {
+        color: var(--surface);
+        background: var(--ink);
+        padding: 7px 14px;
+        border-radius: 6px;
         font-weight: 600;
       }
-      .placeholder {
-        border: 1px dashed rgba(129, 140, 248, 0.35);
-        background: rgba(99, 102, 241, 0.05);
+      .site-nav .nav-cv:hover {
+        color: var(--surface);
+        background: var(--pine);
       }
-      .badge-progress {
-        font-size: 10px;
-        letter-spacing: 0.04em;
-        padding: 4px 9px;
-        border-radius: 999px;
-        background: rgba(34, 211, 238, 0.1);
-        color: #67e8f9;
-        border: 1px solid rgba(34, 211, 238, 0.25);
+
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 88px 0 96px;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        gap: 64px;
+        align-items: start;
+      }
+      .hero h1 {
+        font-size: clamp(2.75rem, 7vw, 5.25rem);
+        line-height: 0.98;
+        font-weight: 800;
+        letter-spacing: -0.035em;
+        margin-bottom: 28px;
+      }
+      .hero-role {
+        font-size: 1.375rem;
+        line-height: 1.4;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        max-width: 30ch;
+        margin-bottom: 20px;
+      }
+      .hero-intro {
+        color: var(--muted);
+        max-width: 52ch;
+        margin-bottom: 36px;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        text-decoration: none;
+        border: 1px solid var(--ink);
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .btn svg {
+        width: 18px;
+        height: 18px;
+        flex: none;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--surface);
+      }
+      .btn-primary:hover {
+        background: var(--pine);
+        border-color: var(--pine);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: var(--ink);
+      }
+      .btn-secondary:hover {
+        background: var(--surface);
+      }
+      .hero-facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin-top: 36px;
+        padding: 0;
+        list-style: none;
+        font-size: 0.9375rem;
+        color: var(--muted);
+      }
+      .hero-facts li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .hero-facts svg {
+        width: 16px;
+        height: 16px;
+        color: var(--pine);
+      }
+
+      /* ---------- Pipeline (the signature element) ---------- */
+      .pipeline {
+        background: var(--surface);
+        border: 1px solid var(--rule);
+        border-radius: 14px;
+        padding: 28px 28px 24px;
+      }
+      .pipeline-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 6px;
+      }
+      .pipeline-head h2 {
+        font-size: 1.125rem;
         font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .pipeline-status {
+        font-family: var(--mono);
+        font-size: 0.8125rem;
+        color: var(--pine);
+        white-space: nowrap;
+        opacity: 0;
+        animation: appear 0.3s ease forwards;
+        animation-delay: 2.6s;
+      }
+      .pipeline-sub {
+        color: var(--muted);
+        font-size: 0.9375rem;
+        margin-bottom: 22px;
+      }
+      .steps {
+        list-style: none;
+        padding: 0;
+        position: relative;
+      }
+      .steps li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        column-gap: 16px;
+        padding-bottom: 16px;
+      }
+      .steps li:last-child {
+        padding-bottom: 0;
+      }
+      /* connector line between markers */
+      .steps li:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 26px;
+        bottom: 0;
+        width: 2px;
+        background: var(--rule);
+      }
+      .marker {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 2px solid var(--rule);
+        background: var(--surface);
+        display: grid;
+        place-items: center;
+        position: relative;
+        z-index: 1;
+        animation: pass 0.25s ease forwards;
+      }
+      .marker svg {
+        width: 14px;
+        height: 14px;
+        color: var(--surface);
+        opacity: 0;
+        animation: appear 0.2s ease forwards;
+      }
+      .steps li:nth-child(1) .marker,
+      .steps li:nth-child(1) .marker svg { animation-delay: 0.3s; }
+      .steps li:nth-child(2) .marker,
+      .steps li:nth-child(2) .marker svg { animation-delay: 0.6s; }
+      .steps li:nth-child(3) .marker,
+      .steps li:nth-child(3) .marker svg { animation-delay: 0.9s; }
+      .steps li:nth-child(4) .marker,
+      .steps li:nth-child(4) .marker svg { animation-delay: 1.2s; }
+      .steps li:nth-child(5) .marker,
+      .steps li:nth-child(5) .marker svg { animation-delay: 1.5s; }
+      .steps li:nth-child(6) .marker,
+      .steps li:nth-child(6) .marker svg { animation-delay: 1.8s; }
+      .steps li:nth-child(7) .marker,
+      .steps li:nth-child(7) .marker svg { animation-delay: 2.1s; }
+      .steps li:nth-child(8) .marker,
+      .steps li:nth-child(8) .marker svg { animation-delay: 2.4s; }
+
+      @keyframes pass {
+        to {
+          background: var(--pine);
+          border-color: var(--pine);
+        }
+      }
+      @keyframes appear {
+        to {
+          opacity: 1;
+        }
+      }
+      .step-name {
+        font-weight: 600;
+        line-height: 26px;
+      }
+      .step-detail {
+        grid-column: 2;
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+      .step-detail code,
+      .prose code,
+      .project code {
+        font-family: var(--mono);
+        font-size: 0.85em;
+        background: var(--ground);
+        padding: 1px 5px;
+        border-radius: 4px;
+        color: var(--ink);
+      }
+      .pipeline-foot {
+        margin-top: 22px;
+        padding-top: 16px;
+        border-top: 1px solid var(--rule);
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      .pipeline-foot a {
+        color: var(--pine);
+        font-weight: 600;
+      }
+
+      /* ---------- Sections ---------- */
+      .section {
+        padding: 96px 0;
+        border-top: 1px solid var(--rule);
+      }
+      .section-white {
+        background: var(--surface);
+      }
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        gap: 48px;
+        margin-bottom: 56px;
+      }
+      .section-head h2 {
+        font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+      }
+      .section-head p {
+        color: var(--muted);
+        max-width: 60ch;
+        align-self: end;
+      }
+
+      /* About */
+      .about {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        gap: 48px;
+      }
+      .about h2 {
+        font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+      }
+      .prose p {
+        max-width: 64ch;
+      }
+      .prose p + p {
+        margin-top: 18px;
+      }
+      .prose .lede {
+        font-size: 1.3125rem;
+        line-height: 1.5;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        margin-bottom: 24px;
+      }
+
+      /* Projects */
+      .feature {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 48px;
+        padding: 40px;
+        background: var(--surface);
+        border: 1px solid var(--rule);
+        border-radius: 14px;
+        margin-bottom: 24px;
+      }
+      .project h3 {
+        font-size: 1.5rem;
+        line-height: 1.25;
+        font-weight: 700;
+        letter-spacing: -0.015em;
+        margin-bottom: 14px;
+      }
+      .project p {
+        color: var(--muted);
+        max-width: 60ch;
+      }
+      .project p + p {
+        margin-top: 14px;
+      }
+      .stack {
+        margin-top: 18px;
+        font-size: 0.875rem;
+        color: var(--ink);
+      }
+      .stack span {
+        color: var(--muted);
+      }
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        color: var(--pine);
+        text-decoration: none;
+      }
+      .project-link:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .project-link svg {
+        width: 16px;
+        height: 16px;
+      }
+      .tradeoffs {
+        background: var(--ground);
+        border-radius: 10px;
+        padding: 24px 26px;
+        align-self: start;
+      }
+      .tradeoffs h4 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .tradeoffs ul {
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+      .tradeoffs li + li {
+        margin-top: 8px;
+      }
+      .tradeoffs strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .project-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        border-top: 1px solid var(--rule);
+      }
+      .project-list .project {
+        padding: 32px 32px 8px 0;
+      }
+      .project-list .project + .project {
+        padding-left: 32px;
+        border-left: 1px solid var(--rule);
+      }
+      .project-list h3 {
+        font-size: 1.25rem;
+      }
+      .tag-progress {
+        display: inline-block;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--amber);
+        background: var(--amber-soft);
+        padding: 2px 9px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 48px;
+      }
+      .skills h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .skills-note {
+        color: var(--muted);
+        font-size: 0.9375rem;
+        margin-bottom: 20px;
+      }
+      .skill-rows {
+        border-top: 1px solid var(--rule);
+      }
+      .skill-rows div {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.9375rem;
+      }
+      .skill-rows dt {
+        font-weight: 600;
+      }
+      .skill-rows dd {
+        color: var(--muted);
+      }
+
+      /* Timeline */
+      .timeline {
+        list-style: none;
+        padding: 0;
+        border-left: 2px solid var(--rule);
+        margin-left: 6px;
+      }
+      .timeline li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        gap: 32px;
+        padding: 0 0 40px 32px;
+      }
+      .timeline li:last-child {
+        padding-bottom: 0;
+      }
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 6px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--ground);
+        border: 2px solid var(--muted);
+      }
+      .timeline li.now::before {
+        background: var(--pine);
+        border-color: var(--pine);
+      }
+      .when {
+        color: var(--muted);
+        font-size: 0.9375rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .timeline h3 {
+        font-size: 1.1875rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.35;
+      }
+      .where {
+        color: var(--pine);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .timeline p:not(.where) {
+        color: var(--muted);
+        max-width: 60ch;
+      }
+      .timeline .duties {
+        padding-left: 18px;
+        color: var(--muted);
+        max-width: 64ch;
+      }
+      .timeline .duties li {
+        display: list-item;
+        padding: 0;
+        margin-top: 6px;
+      }
+      .timeline .duties li::before {
+        content: none;
+      }
+      .timeline p.tech {
+        margin-top: 12px;
+        font-size: 0.875rem;
+        color: var(--ink);
+      }
+      .sub-head {
+        font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 80px 0 40px;
+      }
+
+      /* Next */
+      .next {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        list-style: none;
+        padding: 0;
+      }
+      .next li {
+        padding: 24px;
+        background: var(--ground);
+        border-radius: 10px;
+      }
+      .next strong {
+        display: block;
+        font-size: 1.0625rem;
+        margin-bottom: 6px;
+      }
+      .next span {
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+
+      /* Contact */
+      .contact {
+        padding: 104px 0 64px;
+        background: var(--ink);
+        color: #e8eeeb;
+      }
+      .contact h2 {
+        font-size: clamp(2.25rem, 5vw, 3.5rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--surface);
+        margin-bottom: 20px;
+        max-width: 16ch;
+      }
+      .contact-intro {
+        color: #a9b8b2;
+        max-width: 54ch;
+        margin-bottom: 48px;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        border-top: 1px solid #33423d;
+      }
+      .contact-grid a,
+      .contact-grid div {
+        padding: 22px 20px 22px 0;
+        text-decoration: none;
+        border-bottom: 1px solid #33423d;
+      }
+      .contact-grid .label {
+        display: block;
+        font-size: 0.875rem;
+        color: #8fa29b;
+        margin-bottom: 4px;
+      }
+      .contact-grid .value {
+        font-weight: 600;
+        color: var(--surface);
+        word-break: break-word;
+      }
+      .contact-grid a:hover .value {
+        color: #8fd3bd;
+      }
+      .contact-grid a:focus-visible {
+        outline-color: #8fd3bd;
+      }
+      .contact-meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        margin-top: 40px;
+        font-size: 0.9375rem;
+        color: #a9b8b2;
+      }
+      .contact-meta strong {
+        color: var(--surface);
+        font-weight: 600;
+      }
+      .footer-line {
+        margin-top: 72px;
+        font-size: 0.8125rem;
+        color: #7d8f88;
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 960px) {
+        .hero .wrap,
+        .feature,
+        .about,
+        .section-head,
+        .skills {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .project-list {
+          grid-template-columns: 1fr;
+        }
+        .project-list .project,
+        .project-list .project + .project {
+          padding: 28px 0 28px;
+          border-left: 0;
+        }
+        .project-list .project + .project {
+          border-top: 1px solid var(--rule);
+        }
+        .next {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .site-nav a:not(.nav-cv) {
+          display: none;
+        }
+        .hero {
+          padding: 56px 0 72px;
+        }
+        .section {
+          padding: 72px 0;
+        }
+        .feature {
+          padding: 24px;
+        }
+        .pipeline {
+          padding: 22px 20px 20px;
+        }
+        .timeline li {
+          grid-template-columns: 1fr;
+          gap: 4px;
+          padding-left: 24px;
+        }
+        .skill-rows div {
+          grid-template-columns: 1fr;
+          gap: 2px;
+        }
+        .contact-grid,
+        .contact-meta {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
-        .card:hover {
-          transform: none;
+        .marker,
+        .marker svg,
+        .pipeline-status {
+          animation-duration: 0s !important;
+          animation-delay: 0s !important;
         }
-        * {
-          animation: none !important;
+        .btn {
+          transition: none;
         }
-      }
-      a:focus-visible,
-      summary:focus-visible {
-        outline: 2px solid #22d3ee;
-        outline-offset: 3px;
-        border-radius: 6px;
       }
     </style>
   </head>
-  <body
-    class="bg-[#0f172a] text-slate-300 antialiased selection:bg-indigo-500/30 selection:text-white"
-  >
-    <!-- ============ NAV ============ -->
-    <nav class="fixed top-0 w-full z-50 glass border-x-0 border-t-0">
-      <div
-        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <a
-          href="#home"
-          class="text-white font-bold text-lg md:text-xl code-font"
-          aria-label="Back to top"
-        >
-          ~/razibul<span class="text-indigo-400">.DevOps</span>
-        </a>
 
-        <div
-          class="space-x-7 hidden md:flex items-center text-sm font-medium tracking-wide"
-        >
-          <a href="#about" class="hover:text-indigo-400 transition">About</a>
-          <a href="#experience" class="hover:text-indigo-400 transition"
-            >Experience</a
-          >
-          <a href="#skills" class="hover:text-indigo-400 transition">Skills</a>
-          <a href="#projects" class="hover:text-indigo-400 transition"
-            >Projects</a
-          >
-          <a href="#education" class="hover:text-indigo-400 transition"
-            >Education</a
-          >
-          <a
-            href="#contact"
-            class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500 transition"
-            >Contact</a
-          >
-        </div>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-        <a
-          href="#contact"
-          class="md:hidden text-sm px-4 py-2 bg-indigo-600 text-white rounded-lg"
-          >Contact</a
-        >
-      </div>
-    </nav>
-
-    <!-- ============ HERO ============ -->
-    <header id="home" class="relative pt-36 pb-24 px-6 overflow-hidden grid-bg">
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-[#0f172a]"
-      ></div>
-      <div class="relative max-w-5xl mx-auto text-center">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 mb-7 text-xs font-semibold tracking-wide text-indigo-300 bg-indigo-400/10 rounded-full border border-indigo-400/20"
-        >
-          <span
-            class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
-          ></span>
-          Open to Full-Stack, DevOps and Cloud Engineering roles in Germany
-        </div>
-
-        <p class="code-font text-cyan-400 text-sm md:text-base mb-5">
-          Full-Stack Developer • Berlin, Germany
-        </p>
-
-        <h1
-          class="text-4xl md:text-6xl font-extrabold text-white mb-7 tracking-tight leading-tight"
-        >
-          Razibul Hossen
-        </h1>
-
-        <p
-          class="text-lg md:text-xl text-slate-400 mb-4 max-w-3xl mx-auto leading-relaxed"
-        >
-          I build web applications with React, TypeScript, Next.js and Node.js —
-          and I'm moving that work closer to the infrastructure it runs on:
-          containers, CI/CD pipelines, and cloud platforms.
-        </p>
-        <p
-          class="text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed text-sm md:text-base"
-        >
-          Currently a working student developer at Hitachi Rail while finishing
-          an M.Sc. in Physics and a DevOps &amp; Cloud Engineering programme.
-        </p>
-
-        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-14">
-          <a
-            href="#projects"
-            class="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition"
-          >
-            <i class="fa-solid fa-layer-group mr-2"></i> See my work
-          </a>
-          <a
-            href="https://github.com/hossenra"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition"
-          >
-            <i class="fa-brands fa-github mr-2"></i> GitHub
-          </a>
-          <!-- Put your CV PDF next to this file and name it resume.pdf -->
-          <a
-            href="resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/5 transition"
-          >
-            <i class="fa-solid fa-file-arrow-down mr-2"></i> Download CV
-          </a>
-        </div>
-
-        <div
-          class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left"
-        >
-          <div class="glass rounded-2xl p-5">
-            <p class="text-2xl font-bold text-white">3+ years</p>
-            <p class="text-xs text-slate-500 mt-1">Building web applications</p>
-          </div>
-          <div class="glass rounded-2xl p-5">
-            <p class="text-lg font-bold text-white">Hitachi Rail</p>
-            <p class="text-xs text-slate-500 mt-1">
-              Full-stack developer since 2025
-            </p>
-          </div>
-          <div class="glass rounded-2xl p-5">
-            <p class="text-lg font-bold text-white">M.Sc. Physics</p>
-            <p class="text-xs text-slate-500 mt-1">BTU Cottbus-Senftenberg</p>
-          </div>
-          <div class="glass rounded-2xl p-5">
-            <p class="text-lg font-bold text-white">DevOps track</p>
-            <p class="text-xs text-slate-500 mt-1">
-              Cloud engineering programme
-            </p>
-          </div>
-        </div>
+    <header class="site-header">
+      <div class="wrap">
+        <a href="#top" class="brand">Razibul Hossen</a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#path">Experience</a>
+          <a href="#contact">Contact</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" class="nav-cv">CV (PDF)</a>
+        </nav>
       </div>
     </header>
 
-    <!-- ============ ABOUT ============ -->
-    <section id="about" class="py-24 px-6">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-start">
+    <main id="main">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="top">
+        <div class="wrap">
           <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-7">
-              About me
-            </h2>
-
-            <h3
-              class="text-2xl md:text-3xl font-semibold text-white leading-snug mb-6"
-            >
-              A developer who wants to own the whole path from commit to
-              production.
-            </h3>
-
-            <p class="text-slate-400 leading-8 mb-6">
-              I've spent the last three years building and shipping web
-              applications for German companies — React and Next.js on the front
-              end, Node.js and SQL behind it. Working in real product teams
-              taught me that writing the feature is only half the job; getting
-              it deployed safely and keeping it running is the other half.
+            <h1>Razibul<br />Hossen</h1>
+            <p class="hero-role">
+              Full-stack developer and Cloud &amp; DevOps engineer in Berlin,
+              building pipelines that ship code safely and roll back on their
+              own when something breaks.
             </p>
-            <p class="text-slate-400 leading-8 mb-6">
-              That's why I'm deliberately building depth in infrastructure:
-              Linux, Docker, Kubernetes, Terraform, CI/CD pipelines and the
-              major cloud platforms. My physics background is a big part of how
-              I work — I'm comfortable sitting with a system I don't understand
-              yet until I can explain why it behaves the way it does.
+            <p class="hero-intro">
+              Three years of React, TypeScript and Node.js work for German
+              companies, currently at Hitachi Rail. I recently finished a
+              DevOps &amp; Cloud Engineering bootcamp.
+              The pipeline panel shows how this page reached you. I designed
+              and run it myself.
             </p>
-            <p class="text-slate-400 leading-8">
-              I'm based in Germany with a valid residence and work permit, and
-              I'm looking for a team where I can contribute as a full-stack
-              developer while growing into platform and cloud work.
-            </p>
-          </div>
 
-          <div class="glass rounded-3xl overflow-hidden">
-            <div
-              class="flex items-center gap-2 px-5 py-4 border-b border-white/10 bg-slate-950/30"
-            >
-              <span class="terminal-dot bg-red-400"></span>
-              <span class="terminal-dot bg-amber-400"></span>
-              <span class="terminal-dot bg-emerald-400"></span>
-              <span class="ml-3 code-font text-xs text-slate-500">whoami</span>
+            <div class="actions">
+              <a href="resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12" /><path d="m7 10 5 5 5-5" /><path d="M5 21h14" /></svg>
+                Download CV
+              </a>
+              <a href="https://github.com/hossenra" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" /></svg>
+                GitHub
+              </a>
+              <a href="#contact" class="btn btn-secondary">Get in touch</a>
             </div>
-            <div class="p-6 md:p-8 code-font text-sm leading-8">
-              <p><span class="text-indigo-400">$</span> role</p>
-              <p class="text-slate-500">
-                → full-stack developer, React / TypeScript / Node
-              </p>
-              <p><span class="text-indigo-400">$</span> currently</p>
-              <p class="text-slate-500">→ Hitachi Rail, Stuttgart</p>
-              <p><span class="text-indigo-400">$</span> learning</p>
-              <p class="text-slate-500">→ Docker, Kubernetes, Terraform, AWS</p>
-              <p><span class="text-indigo-400">$</span> languages</p>
-              <p class="text-slate-500">
-                → English (C1), German (B1 → B2), Bengali (native)
-              </p>
-              <p><span class="text-indigo-400">$</span> work_permit</p>
-              <p class="text-slate-500">
-                → valid, no visa sponsorship required
-              </p>
-              <p><span class="text-indigo-400">$</span> based_in</p>
-              <p class="text-slate-500">
-                → Berlin, open to relocation within Germany
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ============ EXPERIENCE ============ -->
-    <section
-      id="experience"
-      class="py-24 px-6 bg-slate-900/50 border-y border-white/5"
-    >
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
-          Experience
-        </h2>
-
-        <div class="timeline space-y-8">
-          <article class="timeline-item current glass rounded-2xl p-6 md:p-7">
-            <div
-              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
-            >
-              <h3 class="text-xl font-bold text-white">
-                Full-Stack Developer (Working Student)
-              </h3>
-              <span class="code-font text-xs text-cyan-400"
-                >Nov 2025 — present</span
-              >
-            </div>
-            <p class="text-indigo-300 text-sm mb-4">
-              Hitachi Rail · Ditzingen, Stuttgart, Germany
-            </p>
-            <ul
-              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
-            >
+            <ul class="hero-facts">
               <li>
-                <span class="text-slate-200 font-semibold"
-                  >Performance &amp; reliability:</span
-                >
-                optimized SQL queries behind reporting dashboards, cutting
-                average query load time by around 30%.
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                Valid German residence and work permit
               </li>
               <li>
-                Built 10+ accessible, reusable React + MUI components across
-                four product areas, unifying design patterns across the UI.
-              </li>
-              <li>
-                Fixed 20+ critical bugs across the full stack and raised
-                automated test coverage with targeted unit and integration
-                tests.
-              </li>
-              <li>
-                Work daily in a Dockerized development workflow and a
-                CI/CD-driven release process alongside the platform team.
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                English C1, German B1 working toward B2
               </li>
             </ul>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="tag">React</span><span class="tag">TypeScript</span
-              ><span class="tag">MUI</span><span class="tag">Node.js</span
-              ><span class="tag">SQL</span><span class="tag">Docker</span>
+          </div>
+
+          <aside class="pipeline" aria-labelledby="pipeline-title">
+            <div class="pipeline-head">
+              <h2 id="pipeline-title">How this page got here</h2>
+              <span class="pipeline-status" aria-hidden="true">deploy passed</span>
+            </div>
+            <p class="pipeline-sub">Every push to <code>main</code> runs these steps on GitHub Actions.</p>
+
+            <ol class="steps">
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Validate</span>
+                <span class="step-detail">HTML structure, CV present, no broken local links</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Package</span>
+                <span class="step-detail"><code>site/</code> becomes one release archive, stored as a build artifact</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Find the server</span>
+                <span class="step-detail">A dedicated IAM user looks up the EC2 instance</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Connect</span>
+                <span class="step-detail">Short-lived SSH key via EC2 Instance Connect, no private key stored in GitHub</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Release</span>
+                <span class="step-detail">Unpacked into <code>releases/&lt;commit&gt;</code>, then the <code>current</code> symlink switches</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Reload Nginx</span>
+                <span class="step-detail">Config tested with <code>nginx -t</code> before a reload with no downtime</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Health check</span>
+                <span class="step-detail"><code>/health</code> and the homepage, from the server and from the internet</span>
+              </li>
+              <li>
+                <span class="marker" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span>
+                <span class="step-name">Live</span>
+                <span class="step-detail">If any check fails, the previous release comes back automatically</span>
+              </li>
+            </ol>
+
+            <p class="pipeline-foot">
+              Ubuntu on AWS EC2, served by Nginx. The last five releases are kept for rollback.
+              <a href="#projects">More on the design</a>
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT ============ -->
+      <section class="section section-white" id="about">
+        <div class="wrap about">
+          <h2>About</h2>
+          <div class="prose">
+            <p class="lede">
+              I like systems I can explain end to end, from the commit to the
+              request that reaches the server.
+            </p>
+            <p>
+              My background is in physics: a B.Sc. from Bangladesh and an
+              M.Sc. I'm completing at BTU Cottbus-Senftenberg. Physics taught me
+              to stay with a problem I don't understand yet, measure it, and
+              keep going until I can explain why it behaves the way it does.
+              That habit turned out to be most of what debugging is.
+            </p>
+            <p>
+              For three years I've built web applications with React,
+              TypeScript, Node.js and SQL, from an internship in Dhaka to
+              product teams in Bonn and Stuttgart. Working in those teams taught
+              me that writing a feature is only half the job. The other half is
+              getting it deployed safely and keeping it running.
+            </p>
+            <p>
+              So I've been building depth in that second half: Linux,
+              networking, Docker, Kubernetes, Terraform, CI/CD and AWS, through
+              bongoDev's DevOps &amp; Cloud Engineering bootcamp and my own
+              projects.
+            </p>
+            <p>
+              I'm looking for a DevOps, cloud or platform role in Germany, or a
+              full-stack role on a team that owns its own infrastructure. I'm
+              based in Berlin and open to relocating.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section class="section" id="projects">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Projects</h2>
+            <p>
+              Work I can walk you through line by line, including the parts I
+              would change.
+            </p>
+          </div>
+
+          <article class="feature project">
+            <div>
+              <h3>Zero-downtime deployment for this website</h3>
+              <p>
+                A static site served directly by Nginx on Ubuntu EC2, deployed
+                by GitHub Actions. Each push is checked first, then shipped as
+                a versioned release in its own folder. Going live is a single
+                symlink switch, so visitors never see a half-copied site.
+              </p>
+              <p>
+                Access stays narrow. The IAM policy only allows sending a
+                temporary SSH key to this one instance, for the
+                <code>ubuntu</code> user. There's no PEM file in the
+                repository. A shell script bootstraps the server in one run,
+                and Nginx adds a health endpoint, caching rules and basic
+                security headers.
+              </p>
+              <p class="stack">
+                <span>Stack:</span> GitHub Actions, AWS EC2, IAM, EC2 Instance
+                Connect, Nginx, Bash, Python
+              </p>
+              <a class="project-link" href="https://github.com/hossenra" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+                View on GitHub
+              </a>
+            </div>
+            <div class="tradeoffs">
+              <h4>What I'd change for production</h4>
+              <ul>
+                <li><strong>GitHub OIDC with an IAM role</strong> instead of long-lived access keys.</li>
+                <li><strong>SSM Session Manager or an Instance Connect Endpoint</strong> so port 22 doesn't need to be reachable from the internet.</li>
+                <li><strong>HTTPS only</strong> with Let's Encrypt and a redirect from HTTP.</li>
+                <li><strong>An approval gate</strong> on the production environment, plus uptime alerts.</li>
+                <li>At real traffic, <strong>S3 and CloudFront</strong> would be cheaper and simpler for a static site.</li>
+              </ul>
             </div>
           </article>
 
-          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
-            <div
-              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
-            >
-              <h3 class="text-xl font-bold text-white">
-                Frontend Developer (Full-time)
-              </h3>
-              <span class="code-font text-xs text-slate-500"
-                >Feb 2025 — Jun 2025</span
-              >
-            </div>
-            <p class="text-indigo-300 text-sm mb-4">
-              Photovoltaikvision GmbH (PVision) · Stuttgart, Germany
-            </p>
-            <ul
-              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
-            >
-              <li>
-                Implemented and improved 5+ user-facing React features, cutting
-                reported UI bugs by around 25%.
-              </li>
-              <li>
-                Built resilient data-fetching layers and integrated three
-                third-party APIs supporting core product features under
-                production load.
-              </li>
-              <li>
-                Kept the codebase modular and consistent through code reviews
-                and shared team conventions.
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="tag">React</span><span class="tag">JavaScript</span
-              ><span class="tag">REST APIs</span><span class="tag">CSS</span>
-            </div>
-          </article>
+          <div class="project-list">
+            <article class="project">
+              <h3>ZapShift, a parcel delivery platform</h3>
+              <p>
+                Full-stack app with separate dashboards for customers, riders
+                and admins, shipment tracking with a status timeline, a
+                coverage map and Stripe payments verified on the server.
+              </p>
+              <p>
+                I added a Docker image (Alpine, non-root, health check) and a
+                GitHub Actions pipeline. It tests on Node 20 and 22, smoke-tests
+                the container, and only deploys once every check passes.
+              </p>
+              <p class="stack">
+                <span>Stack:</span> React 19, TanStack Query, Node.js, Express 5,
+                MongoDB, Firebase Auth, Stripe, Docker, GitHub Actions
+              </p>
+              <a class="project-link" href="https://github.com/hossenra" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+                View on GitHub
+              </a>
+            </article>
 
-          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
-            <div
-              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
-            >
-              <h3 class="text-xl font-bold text-white">
-                Junior Full-Stack Developer (Full-time)
-              </h3>
-              <span class="code-font text-xs text-slate-500"
-                >Jul 2023 — Dec 2024</span
-              >
-            </div>
-            <p class="text-indigo-300 text-sm mb-4">
-              Q4U Experience Design Studio · Bonn, Germany
-            </p>
-            <ul
-              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
-            >
-              <li>
-                <span class="text-slate-200 font-semibold"
-                  >Containerization:</span
-                >
-                supported Docker-based local development environments across the
-                team, standardizing setup and reducing environment drift.
-              </li>
-              <li>
-                Built 8+ responsive React + Bootstrap front ends from Figma
-                designs using accessible, reusable component libraries.
-              </li>
-              <li>
-                Developed 15+ RESTful CRUD endpoints with Node.js/Express,
-                MongoDB and PostgreSQL via Prisma ORM.
-              </li>
-              <li>
-                Increased test coverage by around 40% through Jest unit and
-                integration tests and active code review.
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="tag">React</span><span class="tag">Node.js</span
-              ><span class="tag">Express</span
-              ><span class="tag">PostgreSQL</span
-              ><span class="tag">MongoDB</span><span class="tag">Prisma</span
-              ><span class="tag">Docker</span><span class="tag">Jest</span>
-            </div>
-          </article>
+            <article class="project">
+              <h3>k8s-deep-dive</h3>
+              <p>
+                My Kubernetes learning repository: manifests and notes I wrote
+                while working through Deployments, Services, ConfigMaps,
+                Secrets and Ingress on a local cluster.
+              </p>
+              <p class="stack">
+                <span>Stack:</span> Kubernetes, kubectl, YAML, Docker
+              </p>
+              <a class="project-link" href="https://github.com/hossenra/k8s-deep-dive" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7" /><path d="M8 7h9v9" /></svg>
+                View on GitHub
+              </a>
+            </article>
 
-          <article class="timeline-item glass rounded-2xl p-6 md:p-7">
-            <div
-              class="flex flex-wrap items-baseline justify-between gap-2 mb-2"
-            >
-              <h3 class="text-xl font-bold text-white">
-                Full-Stack Web Developer, Internship (MERN, Remote)
-              </h3>
-              <span class="code-font text-xs text-slate-500"
-                >Jun 2022 — Feb 2023</span
-              >
-            </div>
-            <p class="text-indigo-300 text-sm mb-4">
-              Programming Hero · Dhaka, Bangladesh
-            </p>
-            <ul
-              class="space-y-2 text-sm text-slate-400 leading-6 list-disc list-inside marker:text-indigo-400"
-            >
-              <li>
-                Contributed to feature development across 3+ MERN stack
-                projects, applying clean-code standards and collaborative
-                workflows.
-              </li>
-              <li>
-                Debugged and resolved issues across front end and back end to
-                improve reliability and user experience.
-              </li>
-            </ul>
-            <div class="flex flex-wrap gap-2 mt-5">
-              <span class="tag">MongoDB</span><span class="tag">Express</span
-              ><span class="tag">React</span><span class="tag">Node.js</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section id="skills" class="py-24 px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Skills</h2>
-        <p class="text-slate-500 mb-12 max-w-2xl">
-          Split honestly between what I use professionally today and what I'm
-          actively building through my DevOps programme and personal projects.
-        </p>
-
-        <h3 class="text-white font-semibold mb-5 text-lg">
-          Professional stack
-        </h3>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
-            <i class="fa-brands fa-react text-3xl text-indigo-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">Front end</h4>
-            <p class="text-sm text-slate-500 leading-6">
-              React, Next.js, TypeScript, Redux, MUI, Tailwind, Bootstrap
-            </p>
-          </div>
-          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
-            <i class="fa-brands fa-node-js text-3xl text-indigo-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">Back end &amp; APIs</h4>
-            <p class="text-sm text-slate-500 leading-6">
-              Node.js, Express, REST APIs, GraphQL, JWT authentication
-            </p>
-          </div>
-          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
-            <i class="fa-solid fa-database text-3xl text-indigo-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">Data</h4>
-            <p class="text-sm text-slate-500 leading-6">
-              PostgreSQL, SQL, MongoDB, Prisma, schema design, query
-              optimization
-            </p>
-          </div>
-          <div class="card p-6 glass rounded-2xl hover:border-indigo-500/50">
-            <i
-              class="fa-solid fa-code-branch text-3xl text-indigo-400 mb-4"
-            ></i>
-            <h4 class="text-white font-semibold mb-3">
-              Testing &amp; workflow
-            </h4>
-            <p class="text-sm text-slate-500 leading-6">
-              Jest, Docker, CI/CD, Git &amp; GitHub, Linux, code review,
-              Scrum/Agile
-            </p>
+            <article class="project">
+              <h3>Pre-commit quality gate</h3>
+              <p>
+                A Git hook that runs before every commit. It formats staged
+                Python files with Black, lints them with Flake8, and blocks the
+                commit if it finds anything that looks like a credential, such
+                as AWS keys, tokens or passwords.
+              </p>
+              <p>
+                It catches problems on my machine, before they reach CI or the
+                repository history.
+              </p>
+              <p class="stack">
+                <span>Stack:</span> Git hooks, Bash, Black, Flake8
+              </p>
+            </article>
           </div>
         </div>
+      </section>
 
-        <h3 class="text-white font-semibold mb-5 text-lg">
-          Building now — DevOps &amp; Cloud
-        </h3>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
-            <i class="fa-solid fa-cloud text-3xl text-cyan-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">Cloud platforms</h4>
-            <p class="text-sm text-slate-500 leading-6">
-              AWS (EC2, S3, ECS/ECR), Azure, GCP — compute, networking, IAM,
-              storage
+      <!-- ============ SKILLS ============ -->
+      <section class="section section-white" id="skills">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Skills</h2>
+            <p>
+              Split by how I've used them: the first list in projects I've
+              built and deployed, the second in bootcamp labs and online courses.
             </p>
           </div>
-          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
-            <i class="fa-brands fa-docker text-3xl text-cyan-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">Orchestration</h4>
-            <p class="text-sm text-slate-500 leading-6">
-              Kubernetes, Helm, container registries, Docker Compose
-            </p>
-          </div>
-          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
-            <i class="fa-solid fa-cubes text-3xl text-cyan-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">
-              Infrastructure as Code
-            </h4>
-            <p class="text-sm text-slate-500 leading-6">
-              Terraform, Ansible, declarative and reproducible environments
-            </p>
-          </div>
-          <div class="card p-6 glass rounded-2xl hover:border-cyan-500/50">
-            <i class="fa-solid fa-chart-line text-3xl text-cyan-400 mb-4"></i>
-            <h4 class="text-white font-semibold mb-3">
-              CI/CD &amp; monitoring
-            </h4>
-            <p class="text-sm text-slate-500 leading-6">
-              Jenkins, GitHub Actions, Prometheus, Grafana, ELK, Bash, Python
-            </p>
+
+          <div class="skills">
+            <div>
+              <h3>Used in my projects</h3>
+              <p class="skills-note">Built, deployed or debugged myself.</p>
+              <dl class="skill-rows">
+                <div><dt>CI/CD</dt><dd>GitHub Actions, build artifacts, test matrices, deploy gates, automatic rollback</dd></div>
+                <div><dt>Cloud</dt><dd>AWS EC2, IAM (least privilege), EC2 Instance Connect, Security Groups</dd></div>
+                <div><dt>Web servers</dt><dd>Nginx configuration, health checks, caching, security headers</dd></div>
+                <div><dt>Containers</dt><dd>Docker, multi-stage and non-root images, container health checks</dd></div>
+                <div><dt>Linux &amp; scripting</dt><dd>Ubuntu, systemd, Bash, Python, Git hooks</dd></div>
+                <div><dt>Application</dt><dd>React, TypeScript, Node.js, Express, MongoDB, REST APIs</dd></div>
+              </dl>
+            </div>
+            <div>
+              <h3>Trained in, building depth</h3>
+              <p class="skills-note">Learned in my bootcamp and courses, not yet used in production work.</p>
+              <dl class="skill-rows">
+                <div><dt>Orchestration</dt><dd>Kubernetes, Helm, Docker Compose</dd></div>
+                <div><dt>Infrastructure as Code</dt><dd>Terraform, Ansible</dd></div>
+                <div><dt>Monitoring</dt><dd>Prometheus, Grafana, ELK stack</dd></div>
+                <div><dt>More CI/CD</dt><dd>Jenkins</dd></div>
+                <div><dt>Networking</dt><dd>TCP/IP, DNS, subnets and routing, TLS basics</dd></div>
+                <div><dt>More cloud</dt><dd>AWS S3, VPC, ECS/ECR; first steps on Azure and GCP</dd></div>
+                <div><dt>AI-assisted development</dt><dd>Agentic coding workflows, Kilo Code, Command Code, reviewing agent-written code</dd></div>
+              </dl>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ============ PROJECTS ============ -->
-    <section
-      id="projects"
-      class="py-24 px-6 bg-slate-900/50 border-y border-white/5"
-    >
-      <div class="max-w-7xl mx-auto">
-        <div
-          class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12"
-        >
-          <h2 class="text-3xl md:text-4xl font-bold text-white">Projects</h2>
-          <p class="text-sm text-slate-500 max-w-xl">
-            Things I've built, with the source available to read.
-          </p>
-        </div>
+      <!-- ============ EXPERIENCE & EDUCATION ============ -->
+      <section class="section" id="path">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Experience</h2>
+            <p>
+              Three years building and shipping web applications, most of it
+              for German companies. Most recent first.
+            </p>
+          </div>
 
-        <div class="grid lg:grid-cols-3 gap-8">
-          <article class="card group rounded-3xl glass p-8">
-            <div class="flex justify-between items-start mb-6">
-              <div class="p-3 bg-indigo-500/10 rounded-xl">
-                <i class="fa-solid fa-truck-fast text-indigo-400 text-2xl"></i>
+          <ol class="timeline">
+            <li class="now">
+              <span class="when">Nov 2025 – present</span>
+              <div>
+                <h3>Full-Stack Developer (Werkstudent)</h3>
+                <p class="where">Hitachi Rail, Ditzingen (Stuttgart)</p>
+                <ul class="duties">
+                  <li>Wrote and optimised SQL queries behind reporting dashboards, cutting average load time by about 30%.</li>
+                  <li>Built 10+ accessible, reusable React and MUI components across four product areas.</li>
+                  <li>Fixed 20+ critical bugs across the stack and added unit and integration tests to prevent regressions.</li>
+                  <li>Work daily in a Dockerised development setup and a CI/CD-driven release process alongside the platform team.</li>
+                </ul>
+                <p class="tech">React, TypeScript, MUI, Node.js, SQL, Docker, CI/CD</p>
               </div>
-              <!-- TODO: link this to the ZapShift repo -->
-              <a
-                href="https://github.com/hossenra"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-slate-400 hover:text-white transition"
-                aria-label="View ZapShift on GitHub"
-                ><i class="fa-brands fa-github text-2xl"></i
-              ></a>
-            </div>
-            <p class="code-font text-xs text-indigo-400 mb-3">
-              Full-stack · personal project
-            </p>
-            <h3 class="text-xl font-bold text-white mb-4">
-              ZapShift — parcel delivery platform
-            </h3>
-            <div class="space-y-4 text-sm leading-7">
-              <p class="text-slate-400">
-                A parcel booking and delivery platform with three role-based
-                dashboards — customer, driver and admin — plus real-time map
-                tracking and payment integration.
-              </p>
-              <p class="text-slate-400">
-                Built end to end: auth, data model, API layer and the three
-                separate UIs that read from it.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-6">
-              <span class="tag">React 19</span
-              ><span class="tag">TypeScript</span
-              ><span class="tag">TanStack Query</span
-              ><span class="tag">Node.js</span><span class="tag">MongoDB</span
-              ><span class="tag">Stripe</span>
-            </div>
-          </article>
-
-          <article class="card group rounded-3xl glass p-8">
-            <div class="flex justify-between items-start mb-6">
-              <div class="p-3 bg-cyan-500/10 rounded-xl">
-                <i class="fa-brands fa-docker text-cyan-400 text-2xl"></i>
+            </li>
+            <li>
+              <span class="when">Feb 2025 – Apr 2025</span>
+              <div>
+                <h3>Frontend Developer (Werkstudent)</h3>
+                <p class="where">Photovoltaikvision GmbH (PVision), Stuttgart</p>
+                <ul class="duties">
+                  <li>Implemented and improved 5+ user-facing React features, reducing reported UI bugs by about 25%.</li>
+                  <li>Built data-fetching layers and integrated three third-party APIs behind core product features.</li>
+                  <li>Kept the codebase modular and consistent through regular code reviews.</li>
+                </ul>
+                <p class="tech">React, JavaScript, REST APIs, CSS</p>
               </div>
-              <span class="badge-progress">In progress</span>
-            </div>
-            <p class="code-font text-xs text-cyan-400 mb-3">
-              Deployment &amp; automation
-            </p>
-            <h3 class="text-xl font-bold text-white mb-4">
-              ZapShift on AWS — containerized delivery
-            </h3>
-            <div class="space-y-4 text-sm leading-7">
-              <p class="text-slate-400">
-                Taking ZapShift from "runs on my machine" to a deployed service:
-                Docker images, a GitHub Actions pipeline that builds and ships
-                on every push, and AWS hosting.
-              </p>
-              <p class="text-slate-400">
-                Prometheus and Grafana for basic health and latency signals once
-                it's live.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-6">
-              <span class="tag">Docker</span
-              ><span class="tag">GitHub Actions</span
-              ><span class="tag">AWS</span><span class="tag">Prometheus</span
-              ><span class="tag">Grafana</span>
-            </div>
-          </article>
-
-          <article class="card group rounded-3xl glass placeholder p-8">
-            <div class="flex justify-between items-start mb-6">
-              <div class="p-3 bg-emerald-500/10 rounded-xl">
-                <i class="fa-solid fa-cubes text-emerald-400 text-2xl"></i>
+            </li>
+            <li>
+              <span class="when">Jul 2023 – Dec 2024</span>
+              <div>
+                <h3>Junior Full-Stack Developer</h3>
+                <p class="where">Q4U Experience Design Studio, Bonn</p>
+                <ul class="duties">
+                  <li>Supported Docker-based local development environments across the team, standardising setup and reducing environment drift.</li>
+                  <li>Delivered 8+ responsive React and Bootstrap front ends from Figma designs.</li>
+                  <li>Developed 15+ REST endpoints with Node.js and Express, on MongoDB and on PostgreSQL via Prisma.</li>
+                  <li>Raised test coverage by about 40% with Jest unit and integration tests.</li>
+                </ul>
+                <p class="tech">React, Node.js, Express, PostgreSQL, MongoDB, Prisma, Docker, Jest</p>
               </div>
-              <span class="badge-progress">In progress</span>
-            </div>
-            <p class="code-font text-xs text-emerald-400 mb-3">
-              Infrastructure as Code
-            </p>
-            <h3 class="text-xl font-bold text-white mb-4">Terraform lab</h3>
-            <div class="space-y-4 text-sm leading-7">
-              <p class="text-slate-400">
-                Provisioning a small but complete environment with Terraform —
-                network, compute, and the application running on top of it.
-              </p>
-              <p class="text-slate-400">
-                Documented with the teardown steps, so the whole thing can be
-                created and destroyed repeatably.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mt-6">
-              <span class="tag">Terraform</span><span class="tag">AWS</span
-              ><span class="tag">Linux</span>
-            </div>
-          </article>
+            </li>
+            <li>
+              <span class="when">Jun 2022 – Feb 2023</span>
+              <div>
+                <h3>Full-Stack Web Developer, Internship (remote)</h3>
+                <p class="where">Programming Hero, Dhaka</p>
+                <ul class="duties">
+                  <li>Built features in 3+ MERN-stack projects following shared clean-code standards.</li>
+                  <li>Fixed frontend and backend bugs and documented API endpoints and changelogs.</li>
+                </ul>
+                <p class="tech">MongoDB, Express, React, Node.js</p>
+              </div>
+            </li>
+          </ol>
+
+          <h2 class="sub-head">Education &amp; training</h2>
+          <ol class="timeline">
+            <li class="now">
+              <span class="when">Nov 2026 – present</span>
+              <div>
+                <h3>System Design course</h3>
+                <p class="where"><a href="https://systemflow.dev/" target="_blank" rel="noopener noreferrer">systemflow.dev</a>, online</p>
+                <p>
+                  86 episodes, from requirements and capacity estimation
+                  through load balancing, caching, databases, messaging,
+                  distributed systems and microservice reliability, ending with
+                  real-world case studies.
+                </p>
+              </div>
+            </li>
+            <li class="now">
+              <span class="when">2026, nearly complete</span>
+              <div>
+                <h3>Mastering Agentic Coding</h3>
+                <p class="where"><a href="https://lwhh.org/courses/mastering-agentic-coding" target="_blank" rel="noopener noreferrer">Learn with Hasin Hayder (LWHH)</a>, online</p>
+                <p>
+                  Working with AI coding agents in real projects: Git workflows
+                  with agents, Command Code and Kilo Code, custom skills,
+                  choosing models per task, sandboxing agents to a project
+                  folder, and reviewing agent-written code.
+                </p>
+              </div>
+            </li>
+            <li class="now">
+              <span class="when">Completed Oct 2026</span>
+              <div>
+                <h3>DevOps &amp; Cloud Engineering Bootcamp, with certificate</h3>
+                <p class="where">bongoDev, online</p>
+                <p>
+                  Linux and networking, Python, Docker, Kubernetes, Terraform,
+                  Ansible, AWS, GitHub Actions, Prometheus and Grafana, taught
+                  through hands-on labs.
+                </p>
+              </div>
+            </li>
+            <li class="now">
+              <span class="when">Oct 2023 – present</span>
+              <div>
+                <h3>M.Sc. Physics</h3>
+                <p class="where">BTU Cottbus-Senftenberg, Germany</p>
+              </div>
+            </li>
+            <li>
+              <span class="when">2010 – 2014</span>
+              <div>
+                <h3>B.Sc. Physics</h3>
+                <p class="where">National University of Bangladesh</p>
+              </div>
+            </li>
+          </ol>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ============ EDUCATION ============ -->
-    <section id="education" class="py-24 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
-          Education &amp; training
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="card glass rounded-2xl p-7 hover:border-indigo-500/50">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <i
-                class="fa-solid fa-graduation-cap text-indigo-400 text-2xl"
-              ></i>
-              <span class="code-font text-xs text-cyan-400"
-                >Oct 2023 — present</span
-              >
-            </div>
-            <h3 class="text-white font-semibold text-lg mb-1">M.Sc. Physics</h3>
-            <p class="text-sm text-slate-500">
-              BTU Cottbus-Senftenberg, Germany
-            </p>
+      <!-- ============ NEXT ============ -->
+      <section class="section section-white" id="next">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Working on now</h2>
+            <p>What I'm learning and building next.</p>
           </div>
-
-          <div class="card glass rounded-2xl p-7 hover:border-indigo-500/50">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <i class="fa-solid fa-server text-cyan-400 text-2xl"></i>
-              <span class="code-font text-xs text-cyan-400">2026</span>
-            </div>
-            <h3 class="text-white font-semibold text-lg mb-1">
-              DevOps &amp; Cloud Engineering bootcamp
-            </h3>
-            <p class="text-sm text-slate-500">
-              Linux (completed), computer networking (current), then CI/CD,
-              Docker, Kubernetes, Terraform, Ansible, Jenkins, Prometheus,
-              Grafana, ELK, AWS / Azure / GCP, Python
-            </p>
-          </div>
-
-          <div
-            class="card glass rounded-2xl p-7 hover:border-indigo-500/50 md:col-span-2"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <i class="fa-solid fa-atom text-indigo-400 text-2xl"></i>
-              <span class="code-font text-xs text-slate-500">2010 — 2014</span>
-            </div>
-            <h3 class="text-white font-semibold text-lg mb-1">B.Sc. Physics</h3>
-            <p class="text-sm text-slate-500">
-              National University of Bangladesh
-            </p>
-          </div>
+          <ul class="next">
+            <li>
+              <strong>System design</strong>
+              <span>Working through the systemflow.dev course: scalability, caching, databases, messaging and distributed systems.</span>
+            </li>
+            <li>
+              <strong>Agentic coding</strong>
+              <span>Finishing the LWHH course on building, reviewing and sandboxing work done with AI coding agents.</span>
+            </li>
+            <li>
+              <strong>AWS Solutions Architect Associate</strong>
+              <span>Preparing for the SAA-C03 exam.</span>
+            </li>
+            <li>
+              <strong>ZapShift on AWS</strong>
+              <span>Moving it to ECS with images in ECR, provisioned with Terraform, with Prometheus and Grafana monitoring.</span>
+            </li>
+            <li>
+              <strong>German B2</strong>
+              <span>Currently B1 and working toward B2.</span>
+            </li>
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <!-- ============ CONTACT ============ -->
-    <footer id="contact" class="py-20 border-t border-white/5 bg-slate-950/30">
-      <div class="max-w-4xl mx-auto text-center px-6">
-        <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">
-          Let's talk
-        </h2>
-        <p class="text-slate-400 mb-8 max-w-2xl mx-auto leading-7">
-          I'm looking for full-stack, DevOps or cloud engineering roles in
-          Germany. If you think I'd be a fit for your team, I'd be glad to hear
-          from you.
+    <footer class="contact" id="contact">
+      <div class="wrap">
+        <h2>Let's talk about your infrastructure.</h2>
+        <p class="contact-intro">
+          I'm looking for DevOps, cloud, platform or full-stack roles in Germany. If
+          your team could use someone who cares about safe releases and clear
+          documentation, I'd be glad to hear from you.
         </p>
 
-        <div class="flex justify-center space-x-6 text-2xl mb-8">
-          <a
-            href="https://www.linkedin.com/in/razibul-hossen-b0573aa3/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-slate-400 hover:text-indigo-400 transition"
-            aria-label="LinkedIn profile"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-          <a
-            href="https://github.com/hossenra"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-slate-400 hover:text-indigo-400 transition"
-            aria-label="GitHub profile"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a
-            href="mailto:smraju1234@gmail.com"
-            class="text-slate-400 hover:text-indigo-400 transition"
-            aria-label="Email smraju1234@gmail.com"
-            ><i class="fa-solid fa-envelope"></i
-          ></a>
+        <div class="contact-grid">
+          <a href="mailto:smraju1234@gmail.com">
+            <span class="label">Email</span>
+            <span class="value">smraju1234@gmail.com</span>
+          </a>
+          <a href="tel:+491794553096">
+            <span class="label">Phone</span>
+            <span class="value">+49 179 4553096</span>
+          </a>
+          <a href="https://www.linkedin.com/in/razibul-hossen-b0573aa3/" target="_blank" rel="noopener noreferrer">
+            <span class="label">LinkedIn</span>
+            <span class="value">razibul-hossen</span>
+          </a>
+          <a href="https://github.com/hossenra" target="_blank" rel="noopener noreferrer">
+            <span class="label">GitHub</span>
+            <span class="value">hossenra</span>
+          </a>
         </div>
 
-        <a
-          href="mailto:smraju1234@gmail.com"
-          class="inline-block px-7 py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-200 transition"
-        >
-          smraju1234@gmail.com
-        </a>
+        <div class="contact-meta">
+          <p><strong>Location:</strong> Berlin, open to relocating within Germany</p>
+          <p><strong>Languages:</strong> Bengali (native), English (C1), German (B1, working toward B2)</p>
+        </div>
 
-        <p class="mt-12 text-xs text-slate-600 code-font">
-          &copy; 2026 Razibul Hossen · Berlin, Germany
-        </p>
+        <p class="footer-line">&copy; 2026 Razibul Hossen. Static HTML served by Nginx on AWS EC2.</p>
       </div>
     </footer>
   </body>
